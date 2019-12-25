@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4E5BBBFF48A56330FBAA0D8 /* Pods_StorIt_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2E7AD8366523B3F254C624 /* Pods_StorIt_IOS.framework */; };
 		C6B2B4DD23B155DD0035F586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B4DC23B155DD0035F586 /* AppDelegate.swift */; };
 		C6B2B4DF23B155DD0035F586 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B4DE23B155DD0035F586 /* SceneDelegate.swift */; };
 		C6B2B4E123B155DD0035F586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B4E023B155DD0035F586 /* ViewController.swift */; };
@@ -16,6 +17,14 @@
 		C6B2B4EC23B155E10035F586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6B2B4EA23B155E10035F586 /* LaunchScreen.storyboard */; };
 		C6B2B4F723B155E10035F586 /* StorIt_IOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B4F623B155E10035F586 /* StorIt_IOSTests.swift */; };
 		C6B2B50223B155E10035F586 /* StorIt_IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B50123B155E10035F586 /* StorIt_IOSUITests.swift */; };
+		FA8F1C1B23B23DCA00B3C20C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA8F1C1A23B23DCA00B3C20C /* GoogleService-Info.plist */; };
+		FA8F1C1F23B25CFF00B3C20C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C1E23B25CFF00B3C20C /* LoginViewController.swift */; };
+		FA8F1C2123B25DF000B3C20C /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2023B25DF000B3C20C /* ClientViewController.swift */; };
+		FA8F1C2323B2652D00B3C20C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2223B2652D00B3C20C /* TabBarViewController.swift */; };
+		FA8F1C2523B26B7F00B3C20C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2423B26B7F00B3C20C /* SignUpViewController.swift */; };
+		FA8F1C2723B3723000B3C20C /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2623B3723000B3C20C /* MenuTableViewController.swift */; };
+		FA8F1C2923B37F8E00B3C20C /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2823B37F8E00B3C20C /* SlideInTransition.swift */; };
+		FA8F1C2B23B38C6300B3C20C /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2A23B38C6300B3C20C /* ServerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C6B2B4D923B155DD0035F586 /* StorIt-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StorIt-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DEC980E9E125E735B6DD723 /* Pods-StorIt-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorIt-IOS.release.xcconfig"; path = "Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS.release.xcconfig"; sourceTree = "<group>"; };
+		AD7705C54BE511C8AEFD99C6 /* Pods-StorIt-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorIt-IOS.debug.xcconfig"; path = "Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C6B2B4D923B155DD0035F586 /* StorIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B2B4DC23B155DD0035F586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6B2B4DE23B155DD0035F586 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C6B2B4E023B155DD0035F586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +62,15 @@
 		C6B2B4FD23B155E10035F586 /* StorIt-IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StorIt-IOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B2B50123B155E10035F586 /* StorIt_IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorIt_IOSUITests.swift; sourceTree = "<group>"; };
 		C6B2B50323B155E10035F586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC2E7AD8366523B3F254C624 /* Pods_StorIt_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorIt_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8F1C1A23B23DCA00B3C20C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA8F1C1E23B25CFF00B3C20C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FA8F1C2023B25DF000B3C20C /* ClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewController.swift; sourceTree = "<group>"; };
+		FA8F1C2223B2652D00B3C20C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FA8F1C2423B26B7F00B3C20C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		FA8F1C2623B3723000B3C20C /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		FA8F1C2823B37F8E00B3C20C /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
+		FA8F1C2A23B38C6300B3C20C /* ServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4E5BBBFF48A56330FBAA0D8 /* Pods_StorIt_IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +99,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DFC415956ED2585936C74AA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD7705C54BE511C8AEFD99C6 /* Pods-StorIt-IOS.debug.xcconfig */,
+				8DEC980E9E125E735B6DD723 /* Pods-StorIt-IOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		0E93AD5D4FFFDED2C4CDC8E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC2E7AD8366523B3F254C624 /* Pods_StorIt_IOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C6B2B4D023B155DD0035F586 = {
 			isa = PBXGroup;
 			children = (
@@ -85,13 +123,15 @@
 				C6B2B4F523B155E10035F586 /* StorIt-IOSTests */,
 				C6B2B50023B155E10035F586 /* StorIt-IOSUITests */,
 				C6B2B4DA23B155DD0035F586 /* Products */,
+				0DFC415956ED2585936C74AA /* Pods */,
+				0E93AD5D4FFFDED2C4CDC8E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		C6B2B4DA23B155DD0035F586 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C6B2B4D923B155DD0035F586 /* StorIt-IOS.app */,
+				C6B2B4D923B155DD0035F586 /* StorIT.app */,
 				C6B2B4F223B155E10035F586 /* StorIt-IOSTests.xctest */,
 				C6B2B4FD23B155E10035F586 /* StorIt-IOSUITests.xctest */,
 			);
@@ -101,10 +141,18 @@
 		C6B2B4DB23B155DD0035F586 /* StorIt-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				FA8F1C1A23B23DCA00B3C20C /* GoogleService-Info.plist */,
 				C6B2B4DC23B155DD0035F586 /* AppDelegate.swift */,
+				FA8F1C1E23B25CFF00B3C20C /* LoginViewController.swift */,
 				C6B2B4DE23B155DD0035F586 /* SceneDelegate.swift */,
 				C6B2B4E023B155DD0035F586 /* ViewController.swift */,
 				C6B2B4E223B155DD0035F586 /* Main.storyboard */,
+				FA8F1C2623B3723000B3C20C /* MenuTableViewController.swift */,
+				FA8F1C2423B26B7F00B3C20C /* SignUpViewController.swift */,
+				FA8F1C2223B2652D00B3C20C /* TabBarViewController.swift */,
+				FA8F1C2023B25DF000B3C20C /* ClientViewController.swift */,
+				FA8F1C2A23B38C6300B3C20C /* ServerViewController.swift */,
+				FA8F1C2823B37F8E00B3C20C /* SlideInTransition.swift */,
 				C6B2B4E823B155E10035F586 /* Assets.xcassets */,
 				C6B2B4EA23B155E10035F586 /* LaunchScreen.storyboard */,
 				C6B2B4ED23B155E10035F586 /* Info.plist */,
@@ -138,9 +186,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6B2B50623B155E10035F586 /* Build configuration list for PBXNativeTarget "StorIt-IOS" */;
 			buildPhases = (
+				470BCF2B1F299C25585DA3A9 /* [CP] Check Pods Manifest.lock */,
 				C6B2B4D523B155DD0035F586 /* Sources */,
 				C6B2B4D623B155DD0035F586 /* Frameworks */,
 				C6B2B4D723B155DD0035F586 /* Resources */,
+				6A01035419F98FBCC42E9EF4 /* [CP] Embed Pods Frameworks */,
+				598F7CE00978EF6EB4A37E24 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -148,7 +199,7 @@
 			);
 			name = "StorIt-IOS";
 			productName = "StorIt-IOS";
-			productReference = C6B2B4D923B155DD0035F586 /* StorIt-IOS.app */;
+			productReference = C6B2B4D923B155DD0035F586 /* StorIT.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C6B2B4F123B155E10035F586 /* StorIt-IOSTests */ = {
@@ -236,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6B2B4EC23B155E10035F586 /* LaunchScreen.storyboard in Resources */,
+				FA8F1C1B23B23DCA00B3C20C /* GoogleService-Info.plist in Resources */,
 				C6B2B4E923B155E10035F586 /* Assets.xcassets in Resources */,
 				C6B2B4E423B155DD0035F586 /* Main.storyboard in Resources */,
 			);
@@ -257,6 +309,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		470BCF2B1F299C25585DA3A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StorIt-IOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		598F7CE00978EF6EB4A37E24 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A01035419F98FBCC42E9EF4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C6B2B4D523B155DD0035F586 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -264,8 +375,15 @@
 			files = (
 				C6B2B4E123B155DD0035F586 /* ViewController.swift in Sources */,
 				C6B2B4DD23B155DD0035F586 /* AppDelegate.swift in Sources */,
+				FA8F1C2523B26B7F00B3C20C /* SignUpViewController.swift in Sources */,
 				C6B2B4E723B155DD0035F586 /* StorIt_IOS.xcdatamodeld in Sources */,
+				FA8F1C1F23B25CFF00B3C20C /* LoginViewController.swift in Sources */,
+				FA8F1C2B23B38C6300B3C20C /* ServerViewController.swift in Sources */,
+				FA8F1C2723B3723000B3C20C /* MenuTableViewController.swift in Sources */,
+				FA8F1C2323B2652D00B3C20C /* TabBarViewController.swift in Sources */,
 				C6B2B4DF23B155DD0035F586 /* SceneDelegate.swift in Sources */,
+				FA8F1C2123B25DF000B3C20C /* ClientViewController.swift in Sources */,
+				FA8F1C2923B37F8E00B3C20C /* SlideInTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +554,7 @@
 		};
 		C6B2B50723B155E10035F586 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD7705C54BE511C8AEFD99C6 /* Pods-StorIt-IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -445,7 +564,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.StorIt-IOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = StorIT;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -453,6 +572,7 @@
 		};
 		C6B2B50823B155E10035F586 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DEC980E9E125E735B6DD723 /* Pods-StorIt-IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -462,7 +582,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.StorIt-IOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = StorIT;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
