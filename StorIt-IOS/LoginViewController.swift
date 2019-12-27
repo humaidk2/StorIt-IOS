@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import GoogleSignIn
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
@@ -35,6 +36,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         self.txtEmail.delegate = self
         self.txtPassword.delegate = self
+        
+        //add icon to txtEmail
+        let emailImage = UIImage(systemName: "envelope.fill")
+        addLeftImageTo(txtField: txtEmail, andImage: emailImage!)
+        //add icon to txtPassword
+        let passImage = UIImage(systemName: "lock.fill")
+        addLeftImageTo(txtField: txtPassword, andImage: passImage!)
     }
     
     //hide keyboard
@@ -76,4 +84,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         self.present(clientVC, animated: true, completion: nil)
     }
     
+    //put icon on left side of textfield
+    func addLeftImageTo(txtField : UITextField, andImage img: UIImage){
+        
+        //create outerview to have padding for leftImageView
+        let outerView = UIView(frame: CGRect(x: 0, y: 0, width: img.size.width+10, height: img.size.height))
+        let leftImageView = UIImageView(frame: CGRect(x: 10, y: 0.0, width: img.size.width, height: img.size.height))
+        leftImageView.image = img
+        outerView.addSubview(leftImageView)
+        txtField.leftView = outerView
+        txtField.leftView?.tintColor = UIColor.systemGray4
+        txtField.leftViewMode = .always
+    }
 }
