@@ -9,6 +9,9 @@
 import UIKit
 
 class ServerViewController: UIViewController {
+    
+    //variables
+    @IBOutlet weak var fab : UIButton!
 
     //create object of SlideInTransition class
     let transition = SlideInTransition()
@@ -26,7 +29,11 @@ class ServerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       //floating action bar
+        fab.layer.cornerRadius = fab.frame.height/2
+        fab.layer.shadowOpacity = 0.25
+        fab.layer.shadowRadius = 5
+        fab.layer.shadowOffset = CGSize(width: 0, height: 10)
     }
     
 }
