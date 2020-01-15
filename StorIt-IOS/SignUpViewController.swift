@@ -22,6 +22,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtConfirmPassword: UITextField!
     
     private var datePicker : UIDatePicker?
+    let db = Firestore.firestore()
+    var docRef = DocumentReference?.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tapGesture)
         
         mDatePicker.inputView = datePicker
+        
+        //auth state listener
+        Auth.auth().addStateDidChangeListener
+        { (auth, user) in
+            
+            if user != nil {
+              self.goToMenu()
+            }
+            
+        }
         
         //add icon to txtEmail
         let emailImage = UIImage(systemName: "envelope.fill")
@@ -58,6 +70,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
     }
     
     
@@ -81,6 +94,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let email = txtEmail.text!
         let password = txtPassword.text!
         let confirmPassword = txtConfirmPassword.text!
+        let username = txtUsername.text!
+        let firstName = txtFirstName.text!
+        let lastName = txtLastName.text!
+        let birthDate = datePicker?.date
         
         //check if password is same
         if password == confirmPassword {
@@ -93,13 +110,31 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 
                 //if success, logout and go to login
                 let firebaseAuth = Auth.auth()
-                do {
-                  try firebaseAuth.signOut()
-                    print("user logged out")
-                    self.dismiss(animated: true, completion: nil)
-                } catch let signOutError as NSError {
-                  print ("Error signing out: %@", signOutError)
+                
+                var userId = firebaseAuth.currentUser!.uid
+                let dataToSave: [String : Any] = [
+                    "Username" : username,
+                    "First Name" : firstName,
+                    "Last Name" : lastName,
+                    "Email" : email,
+                    "Birthdate" : birthDate
+                ]
+                self.db.collection("Users").document(userId).setData(dataToSave)
+                { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    }else{
+                        print("Document successfully written!")
+                    }
                 }
+                
+//                do {
+//                  try firebaseAuth.signOut()
+//                    print("user logged out")
+//                    self.dismiss(animated: true, completion: nil)
+//                } catch let signOutError as NSError {
+//                  print ("Error signing out: %@", signOutError)
+//                }
                
             }
         }
@@ -144,6 +179,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
+    }
+    
+    //go to menu
+    func goToMenu(){
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let clientVC:TabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
+        
+        //go to new screen in fullscreen
+        clientVC.modalPresentationStyle = .fullScreen
+        self.present(clientVC, animated: true, completion: nil)
     }
 
 }
