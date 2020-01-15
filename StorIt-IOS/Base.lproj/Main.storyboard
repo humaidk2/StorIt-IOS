@@ -262,17 +262,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2I-R6-aR6">
-                                                    <rect key="frame" x="376.5" y="22" width="17.5" height="18"/>
-                                                    <state key="normal" backgroundImage="xmark" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="close" destination="oiw-h9-7hf" eventType="touchUpInside" id="R1R-sZ-10Y"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="l2I-R6-aR6" firstAttribute="top" secondItem="x1h-4J-o1L" secondAttribute="topMargin" constant="9" id="0u1-UJ-j6A"/>
-                                                <constraint firstItem="l2I-R6-aR6" firstAttribute="trailing" secondItem="x1h-4J-o1L" secondAttribute="trailingMargin" id="3zJ-9w-thk"/>
                                                 <constraint firstItem="Km1-vt-oEK" firstAttribute="top" secondItem="sbQ-Lj-MQm" secondAttribute="top" id="NEM-lx-vKO"/>
                                                 <constraint firstItem="sbQ-Lj-MQm" firstAttribute="leading" secondItem="x1h-4J-o1L" secondAttribute="leadingMargin" constant="16" id="Qhp-cz-REa"/>
                                                 <constraint firstItem="sbQ-Lj-MQm" firstAttribute="centerY" secondItem="x1h-4J-o1L" secondAttribute="centerY" id="eGC-kn-WQj"/>
@@ -479,7 +470,32 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhV-yC-9rQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3746.376811594203" y="-268.52678571428572"/>
+            <point key="canvasLocation" x="1977" y="1197"/>
+        </scene>
+        <!--Payment Details-->
+        <scene sceneID="DLH-cD-yqx">
+            <objects>
+                <viewController storyboardIdentifier="PaymentDetailsVC" id="8LS-fm-WOw" customClass="PaymentDetailsViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="orf-W1-YyC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqq-B2-Jon">
+                                <rect key="frame" x="186" y="234" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="AcE-Ga-e8n"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Payment Details" id="L7p-IA-gdI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qlj-OT-Wz3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="887" y="2648"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="hzy-gP-JEO">
@@ -687,6 +703,256 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yhr-Hf-rY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1976.8115942028987" y="349.55357142857139"/>
+        </scene>
+        <!--Payment Details Navigation Controller-->
+        <scene sceneID="Yqd-vQ-eBM">
+            <objects>
+                <navigationController storyboardIdentifier="PaymentDetailsNC" automaticallyAdjustsScrollViewInsets="NO" id="syh-fY-hgl" customClass="PaymentDetailsNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jn9-fo-3lu">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8LS-fm-WOw" kind="relationship" relationship="rootViewController" id="pcf-gm-psS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zst-wM-3Fl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886.95652173913049" y="1936.6071428571427"/>
+        </scene>
+        <!--Plans-->
+        <scene sceneID="Vyd-ba-7qc">
+            <objects>
+                <viewController storyboardIdentifier="PlansVC" id="1Eu-Rd-WpF" customClass="PlansViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="41i-YN-bBg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ETX-tp-UFX"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Plans" id="cUT-Vc-I3H"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BVG-HU-GvM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1767" y="2648"/>
+        </scene>
+        <!--Plans Navigation Controller-->
+        <scene sceneID="0jz-qg-XJj">
+            <objects>
+                <navigationController storyboardIdentifier="PlansNC" automaticallyAdjustsScrollViewInsets="NO" id="ToD-gP-0Wn" customClass="PlansNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GkH-wq-FC8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1Eu-Rd-WpF" kind="relationship" relationship="rootViewController" id="x0H-51-Agi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gbI-3v-Yhc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1767" y="1937"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="sHr-xi-lbb">
+            <objects>
+                <viewController storyboardIdentifier="HelpVC" id="0k4-Hs-V0J" customClass="HelpViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kPL-B4-QSo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="k1j-fg-qhk"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Help" id="Lzw-9e-bxU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t1f-RI-pPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2582.608695652174" y="2647.7678571428569"/>
+        </scene>
+        <!--Help Navigation Controller-->
+        <scene sceneID="R8D-FM-GmI">
+            <objects>
+                <navigationController storyboardIdentifier="HelpNC" automaticallyAdjustsScrollViewInsets="NO" id="sTC-ZA-H1B" customClass="HelpNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hSc-GO-V9K">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0k4-Hs-V0J" kind="relationship" relationship="rootViewController" id="5ia-yM-yht"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X1x-ON-xaN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2583" y="1937"/>
+        </scene>
+        <!--Terms & Condition-->
+        <scene sceneID="mdH-K8-if2">
+            <objects>
+                <viewController storyboardIdentifier="TermsAndConditionVC" id="xxV-hD-PVE" customClass="TermsAndConditionViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FPj-cO-H4C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qn0-Dx-nMn">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-ii-Iz9">
+                                        <rect key="frame" x="20" y="20" width="371" height="1300"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="300" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nH-GC-1AB">
+                                                <rect key="frame" x="20" y="64" width="331" height="1339"/>
+                                                <mutableString key="text">Last updated: 10-10-2019
+
+Please read these Terms and Conditions carefully before using the &lt;b&gt;http://www.CyberMonkeys.com&lt;/b&gt; website and Plan-O mobile application (the "Service") operated by CyberMonkeys. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
+
+If you wish to purchase any product or service made available through the Service ("Purchase"), you may be asked to supply certain information relevant to your Purchase including, without limitation, your …The Purchases section is for businesses that sell online (physical or digital). For the full disclosure section, create your own Terms and Conditions. 
+
+Some parts of the Service are billed on a subscription basis ("Subscription(s)"). You will be billed in advance on a recurring … The Subscriptions section is for SaaS businesses. For the full disclosure section, create your own Terms and Conditions. 
+
+Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material ("Content"). You are responsible for the … The Content section is for businesses that allow users to create, edit, share, make content on their websites or apps. For the full disclosure section, create your own Terms and Conditions. 
+
+Our Service may contain links to third-party web sites or services that are not owned or controlled by Plan-O. CyberMonkeys has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that My Company (change this) shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
+
+We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 (change this) days\' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+
+If you have any questions about these Terms, please contact us.</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMA-NR-Nk5">
+                                                <rect key="frame" x="20" y="20" width="331" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1300" id="6GC-0P-1OJ"/>
+                                            <constraint firstItem="5nH-GC-1AB" firstAttribute="top" secondItem="nMA-NR-Nk5" secondAttribute="bottom" constant="8" id="6gx-GB-VlJ"/>
+                                            <constraint firstItem="nMA-NR-Nk5" firstAttribute="leading" secondItem="0Fq-ii-Iz9" secondAttribute="leading" constant="20" symbolic="YES" id="NFH-fB-AMm"/>
+                                            <constraint firstItem="nMA-NR-Nk5" firstAttribute="top" secondItem="0Fq-ii-Iz9" secondAttribute="top" constant="20" symbolic="YES" id="UBr-QI-p9c"/>
+                                            <constraint firstAttribute="trailing" secondItem="nMA-NR-Nk5" secondAttribute="trailing" constant="20" symbolic="YES" id="fBu-eO-LRb"/>
+                                            <constraint firstAttribute="trailing" secondItem="5nH-GC-1AB" secondAttribute="trailing" constant="20" symbolic="YES" id="qAH-1h-dpM"/>
+                                            <constraint firstItem="5nH-GC-1AB" firstAttribute="leading" secondItem="0Fq-ii-Iz9" secondAttribute="leading" constant="20" symbolic="YES" id="tjy-38-YfJ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="0Fq-ii-Iz9" firstAttribute="leading" secondItem="Qn0-Dx-nMn" secondAttribute="leading" constant="20" symbolic="YES" id="MBJ-wf-alO"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Fq-ii-Iz9" secondAttribute="trailing" constant="20" symbolic="YES" id="ci8-8x-yVZ"/>
+                                    <constraint firstItem="0Fq-ii-Iz9" firstAttribute="width" secondItem="Qn0-Dx-nMn" secondAttribute="width" multiplier="0.896135" id="peJ-wv-raE"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Fq-ii-Iz9" secondAttribute="bottom" constant="20" symbolic="YES" id="qL3-WP-waU"/>
+                                    <constraint firstItem="0Fq-ii-Iz9" firstAttribute="top" secondItem="Qn0-Dx-nMn" secondAttribute="top" constant="20" symbolic="YES" id="x5N-JR-VKy"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Qn0-Dx-nMn" firstAttribute="bottom" secondItem="528-HU-bak" secondAttribute="bottom" id="dPp-55-a5L"/>
+                            <constraint firstItem="Qn0-Dx-nMn" firstAttribute="leading" secondItem="528-HU-bak" secondAttribute="leading" id="ioG-eB-0BM"/>
+                            <constraint firstItem="Qn0-Dx-nMn" firstAttribute="top" secondItem="528-HU-bak" secondAttribute="top" id="jZ1-xc-JRK"/>
+                            <constraint firstItem="Qn0-Dx-nMn" firstAttribute="trailing" secondItem="528-HU-bak" secondAttribute="trailing" id="xcl-jT-mq9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="528-HU-bak"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Terms &amp; Condition" id="Jyh-bG-rIW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fNC-rz-Htk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3428.985507246377" y="2647.7678571428569"/>
+        </scene>
+        <!--Terms And Condition Navigation Controller-->
+        <scene sceneID="l0a-iF-2MQ">
+            <objects>
+                <navigationController storyboardIdentifier="TermsAndConditionNC" automaticallyAdjustsScrollViewInsets="NO" id="dSn-el-eCw" customClass="TermsAndConditionNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hmE-l2-XHB">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xxV-hD-PVE" kind="relationship" relationship="rootViewController" id="C4W-iX-YV3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I41-Fg-45i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3429" y="1937"/>
+        </scene>
+        <!--FAQs-->
+        <scene sceneID="ota-ZB-BcQ">
+            <objects>
+                <viewController storyboardIdentifier="FAQsVC" id="Hdq-O7-QFx" customClass="FAQsViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d6r-8l-S6Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="71T-rr-GV3"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="FAQs" id="X3N-sG-k5Z"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iXo-4b-Vvu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4380" y="2648"/>
+        </scene>
+        <!--Qs Navigation Controller-->
+        <scene sceneID="Am5-8a-Sml">
+            <objects>
+                <navigationController storyboardIdentifier="FAQsNC" automaticallyAdjustsScrollViewInsets="NO" id="9Ut-hd-0uk" customClass="FAQsNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="192-3A-Rwb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hdq-O7-QFx" kind="relationship" relationship="rootViewController" id="eLi-CT-fgN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2vi-QK-Bn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4380" y="1937"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="49o-O4-rHb">
+            <objects>
+                <viewController storyboardIdentifier="ProfileVC" id="2VV-8d-VdD" customClass="ProfileViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ONb-5Z-kyT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="kjJ-dK-J5D"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="4lO-9V-SEy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CIv-og-7LZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-239" y="2648"/>
+        </scene>
+        <!--Profile Navigation Controller-->
+        <scene sceneID="Gxt-PS-egR">
+            <objects>
+                <navigationController storyboardIdentifier="ProfileNC" automaticallyAdjustsScrollViewInsets="NO" id="bUk-OE-OvN" customClass="ProfileNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S6J-os-1Pz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2VV-8d-VdD" kind="relationship" relationship="rootViewController" id="nFR-Zf-9vd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Vo-jY-dKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-239" y="1937"/>
         </scene>
     </scenes>
     <resources>
