@@ -13,7 +13,6 @@ import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
@@ -29,25 +28,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         guard let authentication = user.authentication else {return}
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
+        //use Firestore
+        let db = Firestore.firestore()
+        var datePicker : UIDatePicker?
         Auth.auth().signIn(with: credential) { (result, error) in
             if error == nil {
+                
                 print(result?.user.email)
                 print(result?.user.displayName)
+                
+                //set data to fireStore
+                let firebaseAuth = Auth.auth()
+                var userId = firebaseAuth.currentUser!.uid
+                let dataToSave: [String : Any] = [
+                    "Username" : firebaseAuth.currentUser!.displayName,
+                    "First Name" : "",
+                    "Last Name" : "",
+                    "Email" : firebaseAuth.currentUser!.email,
+                    "Birthdate" : datePicker?.date
+                ]
+                
+                db.collection("Users").document(userId).setData(dataToSave)
+                { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    }else{
+                        print("Document successfully written!")
+                    }
+                }
             }else{
                 print(error?.localizedDescription)
             }
         }
         
-        
-      // Perform any operations on signed in user here.
-      let userId = user.userID                  // For client-side use only!
-      let idToken = user.authentication.idToken // Safe to send to the server
-      let fullName = user.profile.name
-      let givenName = user.profile.givenName
-      let familyName = user.profile.familyName
-      let email = user.profile.email
-      print(fullName)
-      print(email)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
