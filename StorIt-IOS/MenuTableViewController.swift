@@ -12,7 +12,11 @@ import GoogleSignIn
 
 class MenuTableViewController: UITableViewController {
 
+    @IBOutlet weak var usernameTxt: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var emailTxt: UILabel!
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,29 @@ class MenuTableViewController: UITableViewController {
             }
             
         }
+        
+        //Get data from fireStore
+        let firebaseAuth = Auth.auth()
+        var userId = firebaseAuth.currentUser!.uid
+        db.collection("Users").document(userId).getDocument {
+            (document, error) in
+            if let document = document , document.exists {
+                let username = document.get("Username")
+                let email = document.get("Email")
+                
+                //set username and email in nav drawer
+                if email as? String == "" {
+                    self.usernameTxt.text = "Username"
+                }else {
+                    self.usernameTxt.text = username as? String
+                }
+               
+                self.emailTxt.text = email as? String
+            } else {
+                print("Document doesn't exist")
+            }
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
