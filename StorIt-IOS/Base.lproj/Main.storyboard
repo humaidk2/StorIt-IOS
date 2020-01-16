@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -151,6 +151,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lZV-MO-pfF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="75" id="ug4-hL-9m3" customClass="ServerTableViewCell" customModule="StorIT" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ug4-hL-9m3" id="73D-yF-fPT">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PM2-2S-q0R">
+                                                    <rect key="frame" x="20" y="27" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PM2-2S-q0R" firstAttribute="top" secondItem="73D-yF-fPT" secondAttribute="topMargin" constant="16" id="WOw-Gm-gMa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PM2-2S-q0R" secondAttribute="bottom" constant="16" id="jeh-nd-9fP"/>
+                                                <constraint firstItem="PM2-2S-q0R" firstAttribute="leading" secondItem="73D-yF-fPT" secondAttribute="leadingMargin" id="u5M-gv-L4k"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.85763823986053467" green="0.95513194799423218" blue="0.84611469507217407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="serverName" destination="PM2-2S-q0R" id="cUc-JS-7vA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bRk-rd-Nqg" id="mn4-Bh-ItZ"/>
+                                    <outlet property="delegate" destination="bRk-rd-Nqg" id="rMf-bd-PXp"/>
+                                </connections>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5c-ZS-VFY">
                                 <rect key="frame" x="338" y="737" width="56" height="56"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.59993043660000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -165,6 +200,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Ovg-Sw-bfh" firstAttribute="trailing" secondItem="Q5c-ZS-VFY" secondAttribute="trailing" constant="20" id="0Tw-4k-bKu"/>
+                            <constraint firstItem="lZV-MO-pfF" firstAttribute="top" secondItem="Ovg-Sw-bfh" secondAttribute="top" id="1sD-1N-fzq"/>
+                            <constraint firstItem="lZV-MO-pfF" firstAttribute="bottom" secondItem="Ovg-Sw-bfh" secondAttribute="bottom" id="XDX-1J-XXc"/>
+                            <constraint firstItem="lZV-MO-pfF" firstAttribute="trailing" secondItem="Ovg-Sw-bfh" secondAttribute="trailing" id="Z9G-jS-GbG"/>
+                            <constraint firstItem="lZV-MO-pfF" firstAttribute="leading" secondItem="Ovg-Sw-bfh" secondAttribute="leading" id="i91-yH-eUw"/>
                             <constraint firstItem="Ovg-Sw-bfh" firstAttribute="bottom" secondItem="Q5c-ZS-VFY" secondAttribute="bottom" constant="20" id="j28-xC-aUx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ovg-Sw-bfh"/>
@@ -806,7 +845,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="300" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nH-GC-1AB">
                                                 <rect key="frame" x="20" y="64" width="331" height="1339"/>
-                                                <mutableString key="text">Last updated: 10-10-2019
+                                                <string key="text">Last updated: 10-10-2019
 
 Please read these Terms and Conditions carefully before using the &lt;b&gt;http://www.CyberMonkeys.com&lt;/b&gt; website and Plan-O mobile application (the "Service") operated by CyberMonkeys. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
 
@@ -820,7 +859,7 @@ Our Service may contain links to third-party web sites or services that are not 
 
 We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 (change this) days\' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
 
-If you have any questions about these Terms, please contact us.</mutableString>
+If you have any questions about these Terms, please contact us.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
