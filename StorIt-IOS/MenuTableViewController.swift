@@ -31,7 +31,50 @@ class MenuTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 6 { //logout
+        switch indexPath.row {
+        case 0: //Profile
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileNC:ProfileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNC") as! ProfileNavigationController
+            
+            //go to new screen in fullscreen
+            profileNC.modalPresentationStyle = .fullScreen
+            self.present(profileNC, animated: true, completion: nil)
+        case 1: //Payment Details
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let paymentDetailsNC:PaymentDetailsNavigationController = storyboard.instantiateViewController(withIdentifier: "PaymentDetailsNC") as! PaymentDetailsNavigationController
+            
+            //go to new screen in fullscreen
+            paymentDetailsNC.modalPresentationStyle = .fullScreen
+            self.present(paymentDetailsNC, animated: true, completion: nil)
+        case 2: //Plans
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let plansNC:PlansNavigationController = storyboard.instantiateViewController(withIdentifier: "PlansNC") as! PlansNavigationController
+            
+            //go to new screen in fullscreen
+            plansNC.modalPresentationStyle = .fullScreen
+            self.present(plansNC, animated: true, completion: nil)
+        case 3: //Help
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let helpNC:HelpNavigationController = storyboard.instantiateViewController(withIdentifier: "HelpNC") as! HelpNavigationController
+            
+            //go to new screen in fullscreen
+            helpNC.modalPresentationStyle = .fullScreen
+            self.present(helpNC, animated: true, completion: nil)
+        case 4: //Terms & Conditions
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let termsAndConditionNC:TermsAndConditionNavigationController = storyboard.instantiateViewController(withIdentifier: "TermsAndConditionNC") as! TermsAndConditionNavigationController
+            
+            //go to new screen in fullscreen
+            termsAndConditionNC.modalPresentationStyle = .fullScreen
+            self.present(termsAndConditionNC, animated: true, completion: nil)
+        case 5: //FAQs
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let faqsNC:FAQsNavigationController = storyboard.instantiateViewController(withIdentifier: "FAQsNC") as! FAQsNavigationController
+            
+            //go to new screen in fullscreen
+            faqsNC.modalPresentationStyle = .fullScreen
+            self.present(faqsNC, animated: true, completion: nil)
+        case 6: //Logout
             let firebaseAuth = Auth.auth()
             do {
               try firebaseAuth.signOut()
@@ -43,7 +86,10 @@ class MenuTableViewController: UITableViewController {
             
             //logs out google account
             GIDSignIn.sharedInstance().signOut()
+        default:
+            print("Nothing pressed")
         }
+      
     }
     
     func goToLogin(){
