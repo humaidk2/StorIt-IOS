@@ -69,6 +69,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                 print(firebaseError.localizedDescription)
                 return
             }
+            
             print("login success")
             //self?.goToMenu()
         }
