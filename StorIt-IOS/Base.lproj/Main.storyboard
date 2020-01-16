@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -231,6 +232,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kC2-sZ-AzI">
+                                <rect key="frame" x="0.0" y="189" width="414" height="624"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="v3t-GE-dcS">
+                                    <size key="itemSize" width="191" height="211"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VtX-8g-JGU" customClass="ClientCollectionViewCell" customModule="StorIT" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="191" height="211"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JyE-XJ-OVp">
+                                            <rect key="frame" x="0.0" y="0.0" width="191" height="211"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xW-Tu-OT7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="191" height="180"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIw-Cs-Ruc">
+                                                    <rect key="frame" x="8" y="182" width="99" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sAh-ha-KTX">
+                                                    <rect key="frame" x="148" y="181" width="43" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="191" height="211"/>
+                                        <connections>
+                                            <outlet property="fileName" destination="vIw-Cs-Ruc" id="hH7-eJ-hsN"/>
+                                            <outlet property="fileType" destination="2xW-Tu-OT7" id="qkE-ha-yfs"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEV-aW-65y">
                                 <rect key="frame" x="338" y="737" width="56" height="56"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.59993043664383561" colorSpace="custom" customColorSpace="sRGB"/>
@@ -240,12 +283,43 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addNew:" destination="HqG-6J-w0b" eventType="touchUpInside" id="i3v-In-9i1"/>
+                                </connections>
                             </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6M2-Pg-UFW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayj-0X-eM6">
+                                <rect key="frame" x="10" y="144" width="55.5" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="w7M-7f-DRP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="04c-5D-t2z">
+                                <rect key="frame" x="70.5" y="149" width="17" height="31"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="kC2-sZ-AzI" firstAttribute="trailing" secondItem="3TU-ZH-YcV" secondAttribute="trailing" id="8oz-Eu-rzm"/>
                             <constraint firstItem="3TU-ZH-YcV" firstAttribute="trailing" secondItem="zEV-aW-65y" secondAttribute="trailing" constant="20" id="CYX-Wg-6nB"/>
+                            <constraint firstItem="Ayj-0X-eM6" firstAttribute="leading" secondItem="3TU-ZH-YcV" secondAttribute="leading" constant="10" id="GGQ-3v-u7s"/>
+                            <constraint firstItem="kC2-sZ-AzI" firstAttribute="bottom" secondItem="3TU-ZH-YcV" secondAttribute="bottom" id="OyB-bn-Uvl"/>
+                            <constraint firstItem="6M2-Pg-UFW" firstAttribute="trailing" secondItem="3TU-ZH-YcV" secondAttribute="trailing" id="PLZ-4P-84D"/>
+                            <constraint firstItem="6M2-Pg-UFW" firstAttribute="top" secondItem="3TU-ZH-YcV" secondAttribute="top" id="QKi-Ag-nij"/>
+                            <constraint firstItem="04c-5D-t2z" firstAttribute="leading" secondItem="Ayj-0X-eM6" secondAttribute="trailing" constant="5" id="VDH-Sf-Bp3"/>
+                            <constraint firstItem="6M2-Pg-UFW" firstAttribute="leading" secondItem="3TU-ZH-YcV" secondAttribute="leading" id="Y3B-VV-3Yp"/>
                             <constraint firstItem="3TU-ZH-YcV" firstAttribute="bottom" secondItem="zEV-aW-65y" secondAttribute="bottom" constant="20" id="hDv-Ht-m3M"/>
+                            <constraint firstItem="kC2-sZ-AzI" firstAttribute="top" secondItem="Ayj-0X-eM6" secondAttribute="bottom" constant="5" id="htM-zg-qmc"/>
+                            <constraint firstItem="04c-5D-t2z" firstAttribute="top" secondItem="6M2-Pg-UFW" secondAttribute="bottom" constant="4" id="mc4-Zt-65K"/>
+                            <constraint firstItem="kC2-sZ-AzI" firstAttribute="leading" secondItem="3TU-ZH-YcV" secondAttribute="leading" id="nMJ-Hj-DcT"/>
+                            <constraint firstItem="kC2-sZ-AzI" firstAttribute="top" secondItem="04c-5D-t2z" secondAttribute="bottom" constant="8" id="y2e-W4-5Yf"/>
+                            <constraint firstItem="Ayj-0X-eM6" firstAttribute="top" secondItem="6M2-Pg-UFW" secondAttribute="bottom" symbolic="YES" id="yer-ub-dAe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3TU-ZH-YcV"/>
                     </view>
@@ -257,6 +331,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="kC2-sZ-AzI" id="APX-s9-V6h"/>
                         <outlet property="fab" destination="zEV-aW-65y" id="akg-D1-HZA"/>
                     </connections>
                 </viewController>
@@ -998,6 +1073,7 @@ If you have any questions about these Terms, please contact us.</string>
     </scenes>
     <resources>
         <image name="app logo" width="480" height="360"/>
+        <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="background_2" width="750" height="1334"/>
         <image name="cal" width="16" height="16"/>
         <image name="cloud.fill" catalog="system" width="64" height="42"/>
@@ -1006,6 +1082,7 @@ If you have any questions about these Terms, please contact us.</string>
         <image name="path_2" width="414" height="216"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="plus" catalog="system" width="64" height="56"/>
+        <image name="square.and.arrow.up.fill" catalog="system" width="56" height="64"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
 </document>
