@@ -504,12 +504,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="G1p-2h-FqD"/>
                     <connections>
+                        <outlet property="emailTxt" destination="1cU-M4-wnv" id="4a2-pp-TLi"/>
                         <outlet property="profilePic" destination="sbQ-Lj-MQm" id="bwV-ZE-QBg"/>
+                        <outlet property="usernameTxt" destination="Km1-vt-oEK" id="IiY-3D-AUb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhV-yC-9rQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1977" y="1197"/>
+            <point key="canvasLocation" x="1976.8115942028987" y="1196.6517857142856"/>
         </scene>
         <!--Payment Details-->
         <scene sceneID="DLH-cD-yqx">
