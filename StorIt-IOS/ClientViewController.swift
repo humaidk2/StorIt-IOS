@@ -18,6 +18,7 @@ class ClientViewController: UIViewController {
     //create object of SlideInTransition class
     let transition = SlideInTransition()
 
+    //Pressing nav drawer icon
     @IBAction func didTapMenu(_ sender: UIBarButtonItem) {
         guard let menuViewController  = storyboard?.instantiateViewController(withIdentifier: "MenuTVC")
             else{
@@ -26,6 +27,14 @@ class ClientViewController: UIViewController {
         menuViewController.modalPresentationStyle = .overCurrentContext
         menuViewController.transitioningDelegate = self as! UIViewControllerTransitioningDelegate
         present(menuViewController, animated: true)
+        
+        //Go back to Menu controller 
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        transition.dimmingView.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil){
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
