@@ -196,6 +196,9 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapPopup:" destination="bRk-rd-Nqg" eventType="touchUpInside" id="VLS-I7-7eF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -223,6 +226,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPh-17-3EE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2886.9565217391305" y="349.55357142857139"/>
+        </scene>
+        <!--Add Server Pop Up View Controller-->
+        <scene sceneID="uRB-gD-y0c">
+            <objects>
+                <viewController storyboardIdentifier="AddServer" id="nlj-0f-6hJ" customClass="AddServerPopUpViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N3L-fZ-oob">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACu-Lw-waO">
+                                <rect key="frame" x="0.0" y="270" width="414" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didAddServer:" destination="nlj-0f-6hJ" eventType="touchUpInside" id="nx2-pI-ncH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ACu-Lw-waO" firstAttribute="leading" secondItem="jbL-gW-EwU" secondAttribute="leading" id="0FW-Y5-6iL"/>
+                            <constraint firstItem="ACu-Lw-waO" firstAttribute="trailing" secondItem="jbL-gW-EwU" secondAttribute="trailing" id="6Ho-M9-ocN"/>
+                            <constraint firstItem="ACu-Lw-waO" firstAttribute="top" secondItem="jbL-gW-EwU" secondAttribute="top" constant="226" id="Uez-vi-VgU"/>
+                            <constraint firstItem="ACu-Lw-waO" firstAttribute="bottom" secondItem="jbL-gW-EwU" secondAttribute="bottom" id="vzz-IL-BL3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jbL-gW-EwU"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="300"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jca-7K-iLY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3882.608695652174" y="350.89285714285711"/>
         </scene>
         <!--Client-->
         <scene sceneID="rF2-9T-x9q">
@@ -260,8 +294,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sAh-ha-KTX">
-                                                    <rect key="frame" x="148" y="181" width="43" height="29"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-more-24" translatesAutoresizingMaskIntoConstraints="NO" id="sAh-ha-KTX">
+                                                    <rect key="frame" x="159" y="184" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -270,6 +304,7 @@
                                         <connections>
                                             <outlet property="fileName" destination="vIw-Cs-Ruc" id="hH7-eJ-hsN"/>
                                             <outlet property="fileType" destination="2xW-Tu-OT7" id="qkE-ha-yfs"/>
+                                            <outlet property="moreOptions" destination="sAh-ha-KTX" id="5qB-fD-2L4"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -284,7 +319,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="plus" catalog="system"/>
                                 <connections>
-                                    <action selector="addNew:" destination="HqG-6J-w0b" eventType="touchUpInside" id="i3v-In-9i1"/>
+                                    <action selector="addNew:" destination="HqG-6J-w0b" eventType="touchUpInside" id="NAa-UD-3bi"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6M2-Pg-UFW">
@@ -333,6 +368,7 @@
                     <connections>
                         <outlet property="collectionView" destination="kC2-sZ-AzI" id="APX-s9-V6h"/>
                         <outlet property="fab" destination="zEV-aW-65y" id="akg-D1-HZA"/>
+                        <outlet property="sortByTxt" destination="Ayj-0X-eM6" id="bfk-rv-E74"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jt-Gy-xpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1078,11 +1114,11 @@ If you have any questions about these Terms, please contact us.</string>
         <image name="cal" width="16" height="16"/>
         <image name="cloud.fill" catalog="system" width="64" height="42"/>
         <image name="icons8-menu-30" width="30" height="30"/>
+        <image name="icons8-more-24" width="24" height="24"/>
         <image name="path_1" width="414" height="237.5"/>
         <image name="path_2" width="414" height="216"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="plus" catalog="system" width="64" height="56"/>
-        <image name="square.and.arrow.up.fill" catalog="system" width="56" height="64"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
 </document>
