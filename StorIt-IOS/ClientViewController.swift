@@ -10,14 +10,104 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class ClientViewController: UIViewController {
+class ClientViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //variables
+    @IBOutlet weak var sortByTxt: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var fab : UIButton!
+    let transparentView = UIView()
+    let sortByTableView = UITableView() //add new pop up
+    let addNewTableView = UITableView()
+    let moreOptionsTableView = UITableView()
+    
+    let fileType: [UIImage] = [
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!
+    ]
+    let fileName = [
+        "hello","hello","hello","hello",
+        "hello","hello","hello","hello",
+        "hello","hello","hello","hello"
+    ]
+    let fileName2 = [
+        "hello","hello"
+    ]
+    let fileType2: [UIImage] = [
+        UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!,
+    ]
     
     //create object of SlideInTransition class
     let transition = SlideInTransition()
+    
+    //CollectionView for Client page
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return fileName.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ClientCollectionViewCell
+        
+        cell.fileName.text = fileName[indexPath.row]
+        cell.fileType.image = fileType[indexPath.row]
+        cell.moreOptions.tag = indexPath.row
+        let moreOptions = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapMoreOptions))
+        cell.moreOptions.isUserInteractionEnabled = true
+        cell.moreOptions.addGestureRecognizer(moreOptions)
+        return cell
+    }
+    
+    //onlick function of moreOptions
+    //popup slide up menu
+    @objc func tapMoreOptions(sender:UITapGestureRecognizer){
+        let window = UIApplication.shared.keyWindow //to access nav controller
+            
+            //change its color when pressed
+            transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+            transparentView.frame = self.view.frame
+            window?.addSubview(transparentView)
+            
+            //create tableView
+            let screenSize = UIScreen.main.bounds.size
+            sortByTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 250)
+            window?.addSubview(moreOptionsTableView)
+            
+            //to go back to original state
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTransparentViewForMoreOptions))
+            transparentView.addGestureRecognizer(tapGesture)
+            
+            transparentView.alpha = 0
+            
+            //animation
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                self.transparentView.alpha = 0.5
+                self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height - 250, width: screenSize.width, height: 250)
+            }, completion: nil)
+        }
 
+        //remove pop of from sortBy
+        @objc func clickTransparentViewForMoreOptions(){
+            let screenSize = UIScreen.main.bounds.size
+            //animation
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                self.transparentView.alpha = 0
+                self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 250)
+            }, completion: nil)
+        }
+    
     //Pressing nav drawer icon
     @IBAction func didTapMenu(_ sender: UIBarButtonItem) {
         guard let menuViewController  = storyboard?.instantiateViewController(withIdentifier: "MenuTVC")
@@ -39,12 +129,125 @@ class ClientViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        var layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        layout.minimumInteritemSpacing = 5
+        
+        //divide 2 is for how many columns which is 2 columns
+        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width - 20)/2, height: self.collectionView.frame.size.height/3)
+        
+        //sortByTableView initialized
+        sortByTableView.isScrollEnabled = true
+        sortByTableView.delegate = self as! UITableViewDelegate
+        sortByTableView.dataSource = self as! UITableViewDataSource
+        //create identifier
+        sortByTableView.register(SortByTableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        //addNewTableView initialized
+        addNewTableView.isScrollEnabled = true
+        addNewTableView.delegate = self as! UITableViewDelegate
+        addNewTableView.dataSource = self as! UITableViewDataSource
+        //create identifier
+        addNewTableView.register(AddNewTableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        //MoreOptionsTableView initialized
+        moreOptionsTableView.isScrollEnabled = true
+        moreOptionsTableView.delegate = self as! UITableViewDelegate
+        moreOptionsTableView.dataSource = self as! UITableViewDataSource
+        //create identifier
+        moreOptionsTableView.register(MoreOptionsTableViewCell.self, forCellReuseIdentifier: "Cell")
 
         //floating action bar
         fab.layer.cornerRadius = fab.frame.height/2
         fab.layer.shadowOpacity = 0.25
         fab.layer.shadowRadius = 5
         fab.layer.shadowOffset = CGSize(width: 0, height: 10)
+        
+        //to make label clickable
+        let tapSortBy = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapSortBy))
+        sortByTxt.isUserInteractionEnabled = true
+        sortByTxt.addGestureRecognizer(tapSortBy)
+    }
+    
+    //onlick function of tapSortBy
+    //popup slide up menu
+    @objc func tapSortBy(sender:UITapGestureRecognizer){
+        let window = UIApplication.shared.keyWindow //to access nav controller
+        
+        //change its color when pressed
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        transparentView.frame = self.view.frame
+        window?.addSubview(transparentView)
+        
+        //create tableView
+        let screenSize = UIScreen.main.bounds.size
+        sortByTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 250)
+        window?.addSubview(sortByTableView)
+        
+        //to go back to original state
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTransparentView))
+        transparentView.addGestureRecognizer(tapGesture)
+        
+        transparentView.alpha = 0
+        
+        //animation
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.sortByTableView.frame = CGRect(x: 0, y: screenSize.height - 250, width: screenSize.width, height: 250)
+        }, completion: nil)
+    }
+
+    //remove pop of from sortBy
+    @objc func clickTransparentView(){
+        let screenSize = UIScreen.main.bounds.size
+        //animation
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.sortByTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 250)
+        }, completion: nil)
+    }
+    
+    //add new folder/ upload file
+    //popup slide up menu
+    @IBAction func addNew(_ sender: Any) {
+        
+        let window = UIApplication.shared.keyWindow //to access nav controller
+        
+        //change its color when pressed
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        transparentView.frame = self.view.frame
+        window?.addSubview(transparentView)
+        
+        //create tableView
+        let screenSize = UIScreen.main.bounds.size
+        addNewTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 150)
+        window?.addSubview(addNewTableView)
+        
+        //to go back to original state
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTransparentViewForAddNew))
+        transparentView.addGestureRecognizer(tapGesture)
+        
+        transparentView.alpha = 0
+        
+        //animation
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.addNewTableView.frame = CGRect(x: 0, y: screenSize.height - 150, width: screenSize.width, height: 150)
+        }, completion: nil)
+    }
+
+    //remove pop of from addNew
+    @objc func clickTransparentViewForAddNew(){
+        let screenSize = UIScreen.main.bounds.size
+        //animation
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.addNewTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 150)
+        }, completion: nil)
     }
     
 }
@@ -60,4 +263,64 @@ extension ClientViewController: UIViewControllerTransitioningDelegate {
         transition.isPresenting = false
         return transition
     }
+    
+}
+
+//sortby tableview
+extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var numOfRowsInSec:Int!
+
+        if tableView == addNewTableView {
+            numOfRowsInSec = fileType2.count
+            
+        }
+        else if tableView == sortByTableView{
+            numOfRowsInSec = fileType2.count
+        }else if tableView == moreOptionsTableView {
+            numOfRowsInSec = fileType2.count
+        }
+
+        return numOfRowsInSec
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if tableView.isEqual(addNewTableView) {
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddNewTableViewCell
+
+            cell.title.text = fileName2[indexPath.row]
+            cell.settingImage.image = fileType2[indexPath.row]
+            
+            return cell
+
+        }
+        else if tableView == sortByTableView{
+            var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SortByTableViewCell
+
+            cell.title.text = fileName2[indexPath.row]
+            cell.settingImage.image = fileType2[indexPath.row]
+            
+            return cell
+            
+        }else if tableView == moreOptionsTableView{
+            var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MoreOptionsTableViewCell
+
+            cell.title.text = fileName2[indexPath.row]
+            cell.settingImage.image = fileType2[indexPath.row]
+            
+            return cell
+        }else{
+            return UITableViewCell()
+        }
+       
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    
 }
