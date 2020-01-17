@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ServerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     //variables
     @IBOutlet weak var fab : UIButton!
@@ -51,6 +51,13 @@ class ServerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dismiss(animated: true, completion: nil)
     }
     
+    //add server popup
+    @IBAction func didTapPopup(_ sender: UIButton) {
+        let popup = AddServerPopUpViewController.create()
+        let cardPopup = SBCardPopupViewController(contentViewController: popup)
+        cardPopup.show(onViewController: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +67,8 @@ class ServerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         fab.layer.shadowRadius = 5
         fab.layer.shadowOffset = CGSize(width: 0, height: 10)
     }
+    
+    
     
 }
 
