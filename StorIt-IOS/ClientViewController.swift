@@ -322,5 +322,5 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
         return 50
     }
     
-    
+
 }
