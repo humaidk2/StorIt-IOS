@@ -8,14 +8,31 @@
 
 import UIKit
 
-class ServerViewController: UIViewController {
+class ServerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     //variables
     @IBOutlet weak var fab : UIButton!
+    var list = [ "Server 1", "Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1",]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+         as! ServerTableViewCell
+        
+         cell.serverName.text = list[indexPath.row]
+         
+         return cell
+        
+    }
 
     //create object of SlideInTransition class
     let transition = SlideInTransition()
 
+    //When left BarButtonItem is pressed
     @IBAction func didTapMenu(_ sender: UIBarButtonItem) {
         guard let menuViewController  = storyboard?.instantiateViewController(withIdentifier: "MenuTVC")
             else{
@@ -24,6 +41,21 @@ class ServerViewController: UIViewController {
         menuViewController.modalPresentationStyle = .overCurrentContext
         menuViewController.transitioningDelegate = self as! UIViewControllerTransitioningDelegate
         present(menuViewController, animated: true)
+        
+        //Go back to Menu controller
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        transition.dimmingView.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil){
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //add server popup
+    @IBAction func didTapPopup(_ sender: UIButton) {
+        let popup = AddServerPopUpViewController.create()
+        let cardPopup = SBCardPopupViewController(contentViewController: popup)
+        cardPopup.show(onViewController: self)
     }
     
     override func viewDidLoad() {
@@ -35,6 +67,8 @@ class ServerViewController: UIViewController {
         fab.layer.shadowRadius = 5
         fab.layer.shadowOffset = CGSize(width: 0, height: 10)
     }
+    
+    
     
 }
 
