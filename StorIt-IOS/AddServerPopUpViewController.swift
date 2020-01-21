@@ -16,6 +16,9 @@ class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
     
     var allowsSwipeToDismissPopupCard: Bool = true
     
+    @IBOutlet weak var sliderStorageValue: UILabel!
+    @IBOutlet weak var sliderStorage: UISlider!
+    
     //let create initiate for popup
     static func create () -> UIViewController {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "AddServer") as! AddServerPopUpViewController
@@ -33,6 +36,11 @@ class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
     
     @IBAction func didAddServer(_ sender: Any) {
         self.popupViewController?.close()
+    }
+    
+    @IBAction func didChangeSlider(_ sender: UISlider) {
+        
+        sliderStorageValue.text = "\(Int(sender.value.rounded())) MB"
     }
     
     /*

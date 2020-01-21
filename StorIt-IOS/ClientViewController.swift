@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import MobileCoreServices //import docs
 
 class ClientViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -273,8 +274,7 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
         var numOfRowsInSec:Int!
 
         if tableView == addNewTableView {
-            numOfRowsInSec = fileType2.count
-            
+            numOfRowsInSec = 1
         }
         else if tableView == sortByTableView{
             numOfRowsInSec = fileType2.count
@@ -291,8 +291,22 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddNewTableViewCell
 
-            cell.title.text = fileName2[indexPath.row]
-            cell.settingImage.image = fileType2[indexPath.row]
+            cell.folder.text = "Folder"
+            cell.secureUpload.text = "Secure Upload"
+            cell.upload.text = "Upload"
+            
+            let tapUpload = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapUpload))
+            cell.upload.isUserInteractionEnabled = true
+            cell.upload.addGestureRecognizer(tapUpload)
+            
+
+            let tapSecureUpload = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapSecureUpload))
+            cell.secureUpload.isUserInteractionEnabled = true
+            cell.secureUpload.addGestureRecognizer(tapSecureUpload)
+            
+            let tapFolder = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapFolder))
+            cell.folder.isUserInteractionEnabled = true
+            cell.folder.addGestureRecognizer(tapFolder)
             
             return cell
 
@@ -318,9 +332,82 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
        
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 0 {
+            
+            print("THIS IS ROW ONE")
+            
+        }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if tableView == addNewTableView {
+            return 150
+        }else {
+            return 50
+        }
+        
+    }
+    
+    //onlick function of tapUpload
+    @objc func tapFolder(sender:UITapGestureRecognizer){
+        print("TAPPED FOLDER")
+    }
+    
+    //onlick function of tapUpload
+    @objc func tapSecureUpload(sender:UITapGestureRecognizer){
+        print("TAPPED SECURE UPLOAD")
+        
+        //import document
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypePlainText as String], in: .import)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false //allow one file at a time
+        present(documentPicker, animated:true, completion: nil)
+        
+    }
+    
+    //onlick function of tapUpload
+    @objc func tapUpload(sender:UITapGestureRecognizer){
+        print("TAPPED UPLOAD")
+        
+        //import document
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypePlainText as String], in: .import)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false //allow one file at a time
+        present(documentPicker, animated:true, completion: nil)
+    }
+}
 
+
+extension ClientViewController: UIDocumentPickerDelegate {
+    
+    //import document
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
+        guard let selectedFileUrl = urls.first else {
+            return
+        }
+        
+        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        let sandboxFileURL = dir.appendingPathComponent(selectedFileUrl.path)
+        
+        if FileManager.default.fileExists(atPath: sandboxFileURL.path){
+            print ("file exists already")
+        }else {
+            
+            do {
+                try FileManager.default.copyItem(at: selectedFileUrl, to: sandboxFileURL)
+                
+                print("Copied file")
+            }catch{
+                print("Error: \(error)")
+            }
+            
+        }
+        
+    }
+     
 }
