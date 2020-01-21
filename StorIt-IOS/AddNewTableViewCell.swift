@@ -17,16 +17,26 @@ class AddNewTableViewCell: UITableViewCell {
         return view
     }()
     
-    lazy var settingImage: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 15, y: 10, width: 30, height: 30))
-        return imageView
-    }()
+//    lazy var settingImage: UIImageView = {
+//        let imageView = UIImageView(frame: CGRect(x: 15, y: 10, width: 30, height: 30))
+//        return imageView
+//    }()
     
     //60 because u have to start from 0
     //on top x is 15 plus width 30 so total is 45
     //to put some space for title add 15 = 60
-    lazy var title: UILabel = {
-        let title = UILabel(frame: CGRect(x: 60, y: 10, width: self.frame.width - 80, height: 30))
+    lazy var folder: UILabel = {
+        let title = UILabel(frame: CGRect(x: 15, y: 10, width: 80, height: 30))
+        return title
+    }()
+    
+    lazy var secureUpload: UILabel = {
+        let title = UILabel(frame: CGRect(x: 105, y: 10, width: 150, height: 30))
+        return title
+    }()
+    
+    lazy var upload: UILabel! = {
+        let title = UILabel(frame: CGRect(x: 265, y: 10, width: 80, height: 30))
         return title
     }()
 
@@ -38,9 +48,12 @@ class AddNewTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         addSubview(backView)
-        backView.addSubview(settingImage)
-        backView.addSubview(title)
+        
+        backView.addSubview(folder)
+        backView.addSubview(secureUpload)
+        backView.addSubview(upload)
         // Configure the view for the selected state
     }
 
+  
 }
