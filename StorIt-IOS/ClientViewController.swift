@@ -24,13 +24,13 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //For sortby popup
     let sortByImage: [UIImage] = [
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!
+        UIImage(systemName: "arrow.up")!,
+        UIImage(systemName: "arrow.down")!,
+        UIImage(systemName: "arrow.up")!,
+        UIImage(systemName: "arrow.down")!
     ]
     let sortByList = [
-        "Name up","Name down","Size down","Size up"
+        "Name","Name","Size","Size"
     ]
     //For more options popup
     let moreOptionsList = [
