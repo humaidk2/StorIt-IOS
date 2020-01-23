@@ -236,7 +236,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         //make tableview header
         let headerView: UIView = UIView.init(frame: CGRect(x: 0,y: 0,width: screenSize.width,height: 30))
         let labelView: UILabel = UILabel.init(frame: CGRect(x: 4,y: 5,width: screenSize.width,height: 24))
-        labelView.text = "Add New"
+        labelView.text = "Create New"
         labelView.textAlignment = .center
         headerView.addSubview(labelView)
         addNewTableView.tableHeaderView = headerView
