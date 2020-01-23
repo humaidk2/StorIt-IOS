@@ -24,7 +24,8 @@ class AddNewTableViewCell: UITableViewCell {
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.cornerRadius = imageView.bounds.width/2
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .center
+        imageView.tintColor = UIColor.black
         return imageView
     }()
     
@@ -35,7 +36,8 @@ class AddNewTableViewCell: UITableViewCell {
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.cornerRadius = imageView.bounds.width/2
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .center
+        imageView.tintColor = UIColor.black
         return imageView
     }()
     
@@ -46,7 +48,8 @@ class AddNewTableViewCell: UITableViewCell {
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.cornerRadius = imageView.bounds.width/2
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .center
+        imageView.tintColor = UIColor.black
         return imageView
     }()
     
