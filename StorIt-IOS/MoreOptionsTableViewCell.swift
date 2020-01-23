@@ -19,6 +19,7 @@ class MoreOptionsTableViewCell: UITableViewCell {
     
     lazy var settingImage: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 15, y: 10, width: 30, height: 30))
+        imageView.tintColor = UIColor.black
         return imageView
     }()
     
