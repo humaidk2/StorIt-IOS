@@ -428,3 +428,14 @@ extension ClientViewController: UIDocumentPickerDelegate {
     }
      
 }
+
+
+//for navigation controller
+class ClientNavigationController : UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+}
