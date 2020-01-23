@@ -30,6 +30,7 @@
 		FA8F1C2723B3723000B3C20C /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2623B3723000B3C20C /* MenuTableViewController.swift */; };
 		FA8F1C2923B37F8E00B3C20C /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2823B37F8E00B3C20C /* SlideInTransition.swift */; };
 		FA8F1C2B23B38C6300B3C20C /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2A23B38C6300B3C20C /* ServerViewController.swift */; };
+		FAB6058323D9F0C2009A4758 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB6058223D9F0C2009A4758 /* EditProfileViewController.swift */; };
 		FAE7AC7923CFE5F400FA3CB8 /* ServerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE7AC7823CFE5F400FA3CB8 /* ServerTableViewCell.swift */; };
 		FAE7AC7C23D1177D00FA3CB8 /* ClientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE7AC7B23D1177D00FA3CB8 /* ClientCollectionViewCell.swift */; };
 		FAE7AC7E23D12D0000FA3CB8 /* AddNewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE7AC7D23D12D0000FA3CB8 /* AddNewTableViewCell.swift */; };
@@ -88,6 +89,7 @@
 		FA8F1C2623B3723000B3C20C /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		FA8F1C2823B37F8E00B3C20C /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
 		FA8F1C2A23B38C6300B3C20C /* ServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerViewController.swift; sourceTree = "<group>"; };
+		FAB6058223D9F0C2009A4758 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FAE7AC7823CFE5F400FA3CB8 /* ServerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTableViewCell.swift; sourceTree = "<group>"; };
 		FAE7AC7B23D1177D00FA3CB8 /* ClientCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAE7AC7D23D12D0000FA3CB8 /* AddNewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				FA8F1C2823B37F8E00B3C20C /* SlideInTransition.swift */,
 				FA7CBADA23CF1712004C7F2A /* PaymentDetailsViewController.swift */,
 				FA7CBADC23CF25A9004C7F2A /* PlansViewController.swift */,
+				FAB6058223D9F0C2009A4758 /* EditProfileViewController.swift */,
 				FA7CBADE23CF2DF0004C7F2A /* ProfileViewController.swift */,
 				C6B2B4E823B155E10035F586 /* Assets.xcassets */,
 				C6B2B4EA23B155E10035F586 /* LaunchScreen.storyboard */,
@@ -417,6 +420,7 @@
 				FA7CBAE323CF2FA1004C7F2A /* TermsAndConditionViewController.swift in Sources */,
 				FA7CBAE123CF2F00004C7F2A /* HelpViewController.swift in Sources */,
 				FA7CBADF23CF2DF1004C7F2A /* ProfileViewController.swift in Sources */,
+				FAB6058323D9F0C2009A4758 /* EditProfileViewController.swift in Sources */,
 				FA7CBADB23CF1712004C7F2A /* PaymentDetailsViewController.swift in Sources */,
 				FA8F1C1F23B25CFF00B3C20C /* LoginViewController.swift in Sources */,
 				FAE7AC7923CFE5F400FA3CB8 /* ServerTableViewCell.swift in Sources */,
