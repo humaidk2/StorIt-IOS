@@ -67,7 +67,7 @@ class ProfileViewController: UIViewController {
         }
        
     }
-    
+
     //Go back to Menu
     @objc func goBack(){
          //then go to profile page
