@@ -22,31 +22,37 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
     let addNewTableView = UITableView()
     let moreOptionsTableView = UITableView()
     
-    let fileType: [UIImage] = [
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
+    //For sortby popup
+    let sortByImage: [UIImage] = [
         UIImage(named: "background_2")!,
         UIImage(named: "background_2")!,
         UIImage(named: "background_2")!,
         UIImage(named: "background_2")!
     ]
+    let sortByList = [
+        "Name up","Name down","Size down","Size up"
+    ]
+    //For more options popup
+    let moreOptionsList = [
+        "Folder","Share", "Download", "Move",
+        "Duplicate", "Details", "Backup", "Remove"
+    ]
+    let moreOptionsImage: [UIImage] = [
+        UIImage(systemName: "folder")!, UIImage(named: "icons8-shared-document-24")!,
+        UIImage(named: "icons8-downloads-24")!, UIImage(named: "icons8-send-file-24")!,
+        UIImage(named: "icons8-copy-30")!, UIImage(systemName: "info.circle")!,
+        UIImage(named: "icons8-copy-30")!, UIImage(systemName: "trash")!
+    ]
+    
     let fileName = [
-        "hello","hello","hello","hello",
-        "hello","hello","hello","hello",
-        "hello","hello","hello","hello"
+        "Folder","fidel.txt", "ex.txt", "ex.txt",
+        "ex.txt", "ex.txt", "ex.txt", "ex.txt"
     ]
-    let fileName2 = [
-        "hello","hello"
-    ]
-    let fileType2: [UIImage] = [
-        UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!,
+    let fileType: [UIImage] = [
+        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
+        UIImage(named: "background_2")!, UIImage(named: "background_2")!
     ]
     
     //create object of SlideInTransition class
@@ -83,7 +89,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             //create tableView
             let screenSize = UIScreen.main.bounds.size
-            sortByTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 250)
+            sortByTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 400)
             window?.addSubview(moreOptionsTableView)
             
             //to go back to original state
@@ -95,7 +101,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
             //animation
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.transparentView.alpha = 0.5
-                self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height - 250, width: screenSize.width, height: 250)
+                self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height - 400, width: screenSize.width, height: 400)
             }, completion: nil)
         }
 
@@ -105,7 +111,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
             //animation
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.transparentView.alpha = 0
-                self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 250)
+                self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 400)
             }, completion: nil)
         }
     
@@ -225,8 +231,16 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         //create tableView
         let screenSize = UIScreen.main.bounds.size
-        addNewTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 150)
-        window?.addSubview(addNewTableView)
+        addNewTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 180)
+        
+        //make tableview header
+        let headerView: UIView = UIView.init(frame: CGRect(x: 0,y: 0,width: screenSize.width,height: 30))
+        let labelView: UILabel = UILabel.init(frame: CGRect(x: 4,y: 5,width: screenSize.width,height: 24))
+        labelView.text = "Add New"
+        labelView.textAlignment = .center
+        headerView.addSubview(labelView)
+        addNewTableView.tableHeaderView = headerView
+        window?.addSubview(addNewTableView) //add tableview to window
         
         //to go back to original state
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTransparentViewForAddNew))
@@ -237,7 +251,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         //animation
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
             self.transparentView.alpha = 0.5
-            self.addNewTableView.frame = CGRect(x: 0, y: screenSize.height - 150, width: screenSize.width, height: 150)
+            self.addNewTableView.frame = CGRect(x: 0, y: screenSize.height - 180, width: screenSize.width, height: 180)
         }, completion: nil)
     }
 
@@ -247,7 +261,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         //animation
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
             self.transparentView.alpha = 0
-            self.addNewTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 150)
+            self.addNewTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 180)
         }, completion: nil)
     }
     
@@ -277,9 +291,9 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
             numOfRowsInSec = 1
         }
         else if tableView == sortByTableView{
-            numOfRowsInSec = fileType2.count
+            numOfRowsInSec = sortByList.count
         }else if tableView == moreOptionsTableView {
-            numOfRowsInSec = fileType2.count
+            numOfRowsInSec = moreOptionsList.count
         }
 
         return numOfRowsInSec
@@ -294,6 +308,9 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
             cell.folder.text = "Folder"
             cell.secureUpload.text = "Secure Upload"
             cell.upload.text = "Upload"
+            cell.folderImage.image = UIImage(systemName: "folder")
+            cell.secureUploadImage.image = UIImage(systemName: "lock.shield")
+            cell.uploadImage.image = UIImage(named: "icons8-upload-24")
             
             let tapUpload = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapUpload))
             cell.upload.isUserInteractionEnabled = true
@@ -314,16 +331,16 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
         else if tableView == sortByTableView{
             var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SortByTableViewCell
 
-            cell.title.text = fileName2[indexPath.row]
-            cell.settingImage.image = fileType2[indexPath.row]
+            cell.title.text = sortByList[indexPath.row]
+            cell.settingImage.image = sortByImage[indexPath.row]
             
             return cell
             
         }else if tableView == moreOptionsTableView{
             var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MoreOptionsTableViewCell
 
-            cell.title.text = fileName2[indexPath.row]
-            cell.settingImage.image = fileType2[indexPath.row]
+            cell.title.text = moreOptionsList[indexPath.row]
+            cell.settingImage.image = moreOptionsImage[indexPath.row]
             
             return cell
         }else{
