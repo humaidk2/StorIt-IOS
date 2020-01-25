@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class EditProfileViewController: UIViewController, UITextFieldDelegate {
+class EditProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     //variables
+    @IBOutlet weak var profPicImage: UIImageView!
     @IBOutlet weak var editBirthdate: UITextField!
     @IBOutlet weak var editEmail: UITextField!
     @IBOutlet weak var editUsername: UITextField!
@@ -24,9 +25,14 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     private var datePicker : UIDatePicker?
     let db = Firestore.firestore()
     var docRef = DocumentReference?.self
+    var storageRef = Storage.storage().reference()
+    let profilePicPicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profPicImage.layer.cornerRadius = profPicImage.frame.size.height/2
+        profilePicPicker.delegate = self
 
         // Do any additional setup after loading the view.
         //for left bar button
@@ -60,6 +66,9 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tapGesture)
         
         editBirthdate.inputView = datePicker
+        
+        //download prof pic
+        setupProfPic()
     }
     
     //Go back to Menu
@@ -90,13 +99,126 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        //then go to profile page
-        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let profileNC:ProfileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNC") as! ProfileNavigationController
+        //location of storage reference
+        let storedImage = storageRef.child("profileImages").child("\(userId).jpeg")
         
-        //go to new screen in fullscreen
-        profileNC.modalPresentationStyle = .fullScreen
-        self.present(profileNC, animated: true, completion: nil)
+        //storing imageurl to firebase user
+        if let uploadData = profPicImage.image?.jpegData(compressionQuality: 0.5) {
+            storedImage.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+
+                if error != nil {
+                    print(error!)
+                    return
+                }
+
+                storedImage.downloadURL(completion: { (url, error) in
+
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+
+                    let request = Auth.auth().currentUser?.createProfileChangeRequest()
+                    request?.photoURL = url
+                    request?.commitChanges { (error) in
+
+                        if error != nil {
+                            print("Something is wrong")
+                        }
+
+                    }
+
+                })
+
+            })
+        }
+        
+        //add delay before it closes
+        //3 secs delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4){
+            //then go to profile page
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileNC:ProfileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNC") as! ProfileNavigationController
+            
+            //go to new screen in fullscreen
+            profileNC.modalPresentationStyle = .fullScreen
+            self.present(profileNC, animated: true, completion: nil)
+        }
+        
+    }
+    
+    //change profile photo
+    @IBAction func didTapChangePhoto(_ sender: Any) {
+        
+        profilePicPicker.delegate = self 
+        profilePicPicker.allowsEditing = true
+        profilePicPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        self.present(profilePicPicker, animated: true, completion: nil)
+    }
+    
+    //for choosing photo in photo library
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info[.editedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        }else if let originalImage = info[.originalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker {
+            profPicImage.image = selectedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //for cancelling photo in photo library
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //download prof image from firebase storage
+    func setupProfPic(){
+        let firebaseAuth = Auth.auth()
+        var user = firebaseAuth.currentUser
+        
+        let url : URL? = user?.photoURL
+        
+        if url != nil{
+            downloadPickTask(url: url!)
+        }
+        
+    }
+    
+    //download url image and set to imageView
+    private func downloadPickTask(url: URL){
+        let session = URLSession(configuration: .default)
+        let downloadPicTask = session.dataTask(with: url) { (data,response, error) in
+            
+            if let e = error {
+                print("Error downloading")
+            } else {
+                if let res = response as? HTTPURLResponse {
+                    if let imageData = data {
+                        let image = UIImage(data: imageData)
+                        
+                        DispatchQueue.main.async {
+                            self.profPicImage.image = image
+                        }
+                        
+                    }
+                    else{
+                        print("Couldn't get image")
+                    }
+                } else {
+                    print("Could not get response")
+                }
+            }
+            
+        }
+        downloadPicTask.resume()
     }
     
     //hide keyboard
