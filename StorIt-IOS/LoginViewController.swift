@@ -97,4 +97,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         txtField.leftView?.tintColor = UIColor.systemGray4
         txtField.leftViewMode = .always
     }
+    
+
+    @IBAction func didTapForgotPass(_ sender: UIButton) {
+        
+        let popup = ForgotPasswordPopUpViewController.create()
+        let cardPopup = SBCardPopupViewController(contentViewController: popup)
+        cardPopup.show(onViewController: self)
+        
+    }
 }
