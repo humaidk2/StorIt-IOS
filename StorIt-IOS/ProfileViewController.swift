@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profilePicImage.layer.cornerRadius = profilePicImage.frame.size.height/2
+        
         //for left bar button
         let backButton = UIBarButtonItem(image: UIImage(named: "back-24"), style: .plain, target: self, action: #selector(goBack))
         
@@ -67,7 +69,8 @@ class ProfileViewController: UIViewController {
             }
         }
         
-//        profilePicImage.loa
+        //download prof pic
+        setupProfPic()
        
     }
 
@@ -87,6 +90,48 @@ class ProfileViewController: UIViewController {
     //using override func prepare
     @IBAction func goToEditProfile(_ sender: Any) {
         performSegue(withIdentifier: "goToEditProfile", sender: self)
+    }
+    
+    //download prof image from firebase storage
+    func setupProfPic(){
+        let firebaseAuth = Auth.auth()
+        var user = firebaseAuth.currentUser
+        
+        let url : URL? = user?.photoURL
+        
+        if url != nil{
+            downloadPickTask(url: url!)
+        }
+        
+    }
+    
+    //download url image and set to imageView
+    private func downloadPickTask(url: URL){
+        let session = URLSession(configuration: .default)
+        let downloadPicTask = session.dataTask(with: url) { (data,response, error) in
+            
+            if let e = error {
+                print("Error downloading")
+            } else {
+                if let res = response as? HTTPURLResponse {
+                    if let imageData = data {
+                        let image = UIImage(data: imageData)
+                        
+                        DispatchQueue.main.async {
+                            self.profilePicImage.image = image
+                        }
+                        
+                    }
+                    else{
+                        print("Couldn't get image")
+                    }
+                } else {
+                    print("Could not get response")
+                }
+            }
+            
+        }
+        downloadPicTask.resume()
     }
     
     // MARK: - Navigation
