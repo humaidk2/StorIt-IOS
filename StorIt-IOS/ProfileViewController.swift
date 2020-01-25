@@ -12,6 +12,7 @@ import Firebase
 class ProfileViewController: UIViewController {
 
     //variables
+    @IBOutlet weak var profilePicImage: UIImageView!
     @IBOutlet weak var txtBirthdate: UILabel!
     @IBOutlet weak var txtEmail: UILabel!
     @IBOutlet weak var txtUsername: UILabel!
@@ -65,6 +66,8 @@ class ProfileViewController: UIViewController {
                 print("Document doesn't exist")
             }
         }
+        
+//        profilePicImage.loa
        
     }
 
