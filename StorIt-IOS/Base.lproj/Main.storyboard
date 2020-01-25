@@ -340,6 +340,72 @@
             </objects>
             <point key="canvasLocation" x="3881.884057971015" y="350.89285714285711"/>
         </scene>
+        <!--Forgot Password Pop Up View Controller-->
+        <scene sceneID="2p4-iC-fPm">
+            <objects>
+                <viewController storyboardIdentifier="ForgotPassword" id="OPi-wy-tac" customClass="ForgotPasswordPopUpViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p3p-g7-oCb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNN-IR-qlK">
+                                <rect key="frame" x="16" y="15" width="128.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X6Z-Bp-90Z">
+                                <rect key="frame" x="16" y="52.5" width="343" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="TQs-Gg-0bD"/>
+                                    <constraint firstAttribute="width" constant="343" id="Zy6-Vy-4De"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hN8-dc-SQv">
+                                <rect key="frame" x="212" y="131.5" width="147" height="30.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yC-iT-HZl">
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="30.5"/>
+                                        <state key="normal" title="CANCEL"/>
+                                        <connections>
+                                            <action selector="didTapCancel:" destination="OPi-wy-tac" eventType="touchUpInside" id="faS-23-BTA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMS-Of-s7e">
+                                        <rect key="frame" x="79" y="0.0" width="68" height="30.5"/>
+                                        <state key="normal" title="RECOVER"/>
+                                        <connections>
+                                            <action selector="didTapRecover:" destination="OPi-wy-tac" eventType="touchUpInside" id="s1B-3a-bPw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oNN-IR-qlK" firstAttribute="top" secondItem="p3p-g7-oCb" secondAttribute="top" constant="15" id="0TT-nh-Kgf"/>
+                            <constraint firstItem="hN8-dc-SQv" firstAttribute="top" secondItem="X6Z-Bp-90Z" secondAttribute="bottom" constant="45" id="3eT-Op-gzJ"/>
+                            <constraint firstItem="oNN-IR-qlK" firstAttribute="leading" secondItem="p3p-g7-oCb" secondAttribute="leading" constant="16" id="Bei-oa-ROQ"/>
+                            <constraint firstItem="5UQ-RE-d0l" firstAttribute="bottom" secondItem="hN8-dc-SQv" secondAttribute="bottom" constant="38" id="RgS-Oh-A2G"/>
+                            <constraint firstItem="X6Z-Bp-90Z" firstAttribute="top" secondItem="oNN-IR-qlK" secondAttribute="bottom" constant="17" id="mlV-To-P5h"/>
+                            <constraint firstItem="hN8-dc-SQv" firstAttribute="trailing" secondItem="X6Z-Bp-90Z" secondAttribute="trailing" id="rkU-Iu-8D7"/>
+                            <constraint firstItem="5UQ-RE-d0l" firstAttribute="trailing" secondItem="X6Z-Bp-90Z" secondAttribute="trailing" constant="16" id="suT-jA-XUU"/>
+                            <constraint firstItem="X6Z-Bp-90Z" firstAttribute="leading" secondItem="5UQ-RE-d0l" secondAttribute="leading" constant="16" id="tRZ-MM-mWZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5UQ-RE-d0l"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="200"/>
+                    <connections>
+                        <outlet property="emailTxt" destination="X6Z-Bp-90Z" id="LNf-jC-lNs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4EJ-pp-0Dg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3878.985507246377" y="582.58928571428567"/>
+        </scene>
         <!--Client-->
         <scene sceneID="rF2-9T-x9q">
             <objects>
@@ -1274,6 +1340,9 @@ If you have any questions about these Terms, please contact us.</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBY-v6-sFF">
                                 <rect key="frame" x="158" y="193" width="98" height="30"/>
                                 <state key="normal" title="Change Photo"/>
+                                <connections>
+                                    <action selector="didTapChangePhoto:" destination="V0T-C1-dJj" eventType="touchUpInside" id="bEs-HB-meg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1303,6 +1372,7 @@ If you have any questions about these Terms, please contact us.</string>
                         <outlet property="editEmail" destination="UbO-7t-hR8" id="A80-sa-pMH"/>
                         <outlet property="editName" destination="BCo-CA-ade" id="htV-GR-6DL"/>
                         <outlet property="editUsername" destination="8iB-Sg-7pC" id="cKS-xy-QRC"/>
+                        <outlet property="profPicImage" destination="pIl-M6-mXt" id="d1I-NO-eV5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="69A-SN-vvw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1463,6 +1533,7 @@ If you have any questions about these Terms, please contact us.</string>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="4lO-9V-SEy"/>
                     <connections>
+                        <outlet property="profilePicImage" destination="YUo-u5-rmp" id="V73-bY-2s2"/>
                         <outlet property="txtBirthdate" destination="6T7-hQ-twu" id="Wwy-Jl-BDf"/>
                         <outlet property="txtEmail" destination="7Xc-Yn-wzI" id="kPH-h1-Loe"/>
                         <outlet property="txtName" destination="E6z-GR-e2m" id="f4y-dU-K5c"/>
