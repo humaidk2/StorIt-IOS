@@ -580,7 +580,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app logo" translatesAutoresizingMaskIntoConstraints="NO" id="lzG-XB-Rgf">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-online-payment-24" translatesAutoresizingMaskIntoConstraints="NO" id="lzG-XB-Rgf">
                                                     <rect key="frame" x="16" y="25.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="9Ya-qr-SEc"/>
@@ -610,7 +610,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app logo" translatesAutoresizingMaskIntoConstraints="NO" id="YBT-lM-vqK">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-crown-24" translatesAutoresizingMaskIntoConstraints="NO" id="YBT-lM-vqK">
                                                     <rect key="frame" x="16" y="25.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="EhX-qN-OlP"/>
@@ -640,7 +640,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ib5-qZ-7dU">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-help-24" translatesAutoresizingMaskIntoConstraints="NO" id="Ib5-qZ-7dU">
                                                     <rect key="frame" x="16" y="25.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="2yY-GM-9Bn"/>
@@ -670,7 +670,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app logo" translatesAutoresizingMaskIntoConstraints="NO" id="3TR-5M-SbJ">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-terms-and-conditions-24" translatesAutoresizingMaskIntoConstraints="NO" id="3TR-5M-SbJ">
                                                     <rect key="frame" x="16" y="25.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="YRz-S9-G5K"/>
@@ -700,7 +700,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ruv-LM-uBu">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-faq-24" translatesAutoresizingMaskIntoConstraints="NO" id="Ruv-LM-uBu">
                                                     <rect key="frame" x="16" y="25.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="aoe-Wo-Tuc"/>
@@ -730,7 +730,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gow-QB-r02">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-exit-24" translatesAutoresizingMaskIntoConstraints="NO" id="Gow-QB-r02">
                                                     <rect key="frame" x="16" y="25.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="Ihr-L9-9Xs"/>
@@ -1588,8 +1588,14 @@ If you have any questions about these Terms, please contact us.</string>
         <image name="background_2" width="750" height="1334"/>
         <image name="cal" width="16" height="16"/>
         <image name="cloud.fill" catalog="system" width="64" height="42"/>
+        <image name="icons8-crown-24" width="24" height="24"/>
+        <image name="icons8-exit-24" width="24" height="24"/>
+        <image name="icons8-faq-24" width="24" height="24"/>
+        <image name="icons8-help-24" width="24" height="24"/>
         <image name="icons8-menu-30" width="30" height="30"/>
         <image name="icons8-more-24" width="24" height="24"/>
+        <image name="icons8-online-payment-24" width="24" height="24"/>
+        <image name="icons8-terms-and-conditions-24" width="24" height="24"/>
         <image name="path_1" width="414" height="237.5"/>
         <image name="path_2" width="414" height="216"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
