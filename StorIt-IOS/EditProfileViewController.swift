@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class EditProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     //variables
+    @IBOutlet weak var serverPicker: UIPickerView!
     @IBOutlet weak var profPicImage: UIImageView!
     @IBOutlet weak var editBirthdate: UITextField!
     @IBOutlet weak var editEmail: UITextField!
@@ -27,6 +28,24 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UIImageP
     var docRef = DocumentReference?.self
     var storageRef = Storage.storage().reference()
     let profilePicPicker = UIImagePickerController()
+    let serverNames = ["EU", "NA"]
+    
+    //server picker
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return serverNames.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return serverNames[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("\(serverNames[row])")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
