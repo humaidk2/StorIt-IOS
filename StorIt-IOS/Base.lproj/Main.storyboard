@@ -1610,16 +1610,233 @@ If you have any questions about these Terms, please contact us.</string>
             <objects>
                 <viewController storyboardIdentifier="FAQsVC" id="Hdq-O7-QFx" customClass="FAQsViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6r-8l-S6Y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RcY-GW-5LK">
+                                <rect key="frame" x="0.0" y="88" width="414" height="892"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puk-84-bV0">
+                                        <rect key="frame" x="20" y="20" width="374" height="892"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lus-YA-Zqh">
+                                                <rect key="frame" x="67" y="15" width="240" height="69"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="240" id="6bj-0f-LH8"/>
+                                                    <constraint firstAttribute="height" constant="69" id="a8k-UB-OeP"/>
+                                                </constraints>
+                                                <string key="text">Frequently Asked
+Questions</string>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bDc-n1-ENY">
+                                                <rect key="frame" x="12" y="92" width="350" height="119"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is StorIT?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1o-4N-H4R">
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="HbC-JC-T0T"/>
+                                                            <constraint firstAttribute="width" constant="350" id="Y7H-CR-Ke9"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="StorIT is a mobile application that allows users to store their data in cloud." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="5Wl-eQ-Mci">
+                                                        <rect key="frame" x="0.0" y="29" width="350" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="350" id="YGr-DZ-G3j"/>
+                                                            <constraint firstAttribute="height" constant="90" id="ZbR-ns-HKd"/>
+                                                        </constraints>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FiF-Ai-IaO">
+                                                <rect key="frame" x="12" y="221" width="350" height="119"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is StorIT?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKo-FJ-0HO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="QzK-ju-bX4"/>
+                                                            <constraint firstAttribute="width" constant="350" id="vLw-Po-gSY"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="StorIT is a mobile application that allows users to store their data in cloud." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="aQ4-dY-mhA">
+                                                        <rect key="frame" x="0.0" y="29" width="350" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="350" id="9jj-BF-Z8l"/>
+                                                            <constraint firstAttribute="height" constant="90" id="yBY-wi-Yme"/>
+                                                        </constraints>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ixY-cC-DGu">
+                                                <rect key="frame" x="12" y="350" width="350" height="119"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is StorIT?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOq-9L-8hP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="350" id="Jtt-UD-zGX"/>
+                                                            <constraint firstAttribute="height" constant="21" id="pGz-3Y-4ca"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="StorIT is a mobile application that allows users to store their data in cloud." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="2Wc-RR-Efe">
+                                                        <rect key="frame" x="0.0" y="29" width="350" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="90" id="Lsw-z0-U3X"/>
+                                                            <constraint firstAttribute="width" constant="350" id="SdS-vn-0hf"/>
+                                                        </constraints>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Six-01-IYD">
+                                                <rect key="frame" x="12" y="479" width="350" height="119"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is StorIT?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-WG-aRY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="0jP-Y2-RPK"/>
+                                                            <constraint firstAttribute="width" constant="350" id="FIh-eD-rGh"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="StorIT is a mobile application that allows users to store their data in cloud." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="bX3-5q-lNk">
+                                                        <rect key="frame" x="0.0" y="29" width="350" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="90" id="6iL-8S-LmM"/>
+                                                            <constraint firstAttribute="width" constant="350" id="pUQ-mQ-Foz"/>
+                                                        </constraints>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2kS-5N-ai8">
+                                                <rect key="frame" x="12" y="608" width="350" height="119"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is StorIT?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn9-ld-mTA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="542-Ht-meg"/>
+                                                            <constraint firstAttribute="width" constant="350" id="BWU-CY-ms4"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="StorIT is a mobile application that allows users to store their data in cloud." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="wGD-gM-e2l">
+                                                        <rect key="frame" x="0.0" y="29" width="350" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="350" id="OQ5-ER-svh"/>
+                                                            <constraint firstAttribute="height" constant="90" id="lDs-uM-jJj"/>
+                                                        </constraints>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jaA-jF-Z9a">
+                                                <rect key="frame" x="12" y="737" width="350" height="119"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is StorIT?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqT-YG-BeP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="350" id="3HW-fY-Arc"/>
+                                                            <constraint firstAttribute="height" constant="21" id="o23-CI-QYd"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="StorIT is a mobile application that allows users to store their data in cloud." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="IAY-gJ-7Kd">
+                                                        <rect key="frame" x="0.0" y="29" width="350" height="90"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="90" id="2Es-qZ-KPp"/>
+                                                            <constraint firstAttribute="width" constant="350" id="LAS-pa-c0I"/>
+                                                        </constraints>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="jaA-jF-Z9a" firstAttribute="top" secondItem="2kS-5N-ai8" secondAttribute="bottom" constant="10" id="2M5-xO-wbg"/>
+                                            <constraint firstItem="Six-01-IYD" firstAttribute="trailing" secondItem="ixY-cC-DGu" secondAttribute="trailing" id="4kZ-Xc-HXx"/>
+                                            <constraint firstItem="2kS-5N-ai8" firstAttribute="trailing" secondItem="Six-01-IYD" secondAttribute="trailing" id="AEZ-iP-HuN"/>
+                                            <constraint firstItem="Six-01-IYD" firstAttribute="leading" secondItem="ixY-cC-DGu" secondAttribute="leading" id="FTj-9V-m25"/>
+                                            <constraint firstItem="jaA-jF-Z9a" firstAttribute="trailing" secondItem="2kS-5N-ai8" secondAttribute="trailing" id="GxX-OB-MLJ"/>
+                                            <constraint firstAttribute="height" constant="892" id="Nct-Jk-KJ1"/>
+                                            <constraint firstItem="lus-YA-Zqh" firstAttribute="centerX" secondItem="puk-84-bV0" secondAttribute="centerX" id="PrI-hO-8BI"/>
+                                            <constraint firstItem="ixY-cC-DGu" firstAttribute="top" secondItem="FiF-Ai-IaO" secondAttribute="bottom" constant="10" id="QkK-Lf-1A4"/>
+                                            <constraint firstItem="bDc-n1-ENY" firstAttribute="centerX" secondItem="lus-YA-Zqh" secondAttribute="centerX" id="Rb7-Sf-QiN"/>
+                                            <constraint firstItem="jaA-jF-Z9a" firstAttribute="leading" secondItem="2kS-5N-ai8" secondAttribute="leading" id="dVH-kB-Tj4"/>
+                                            <constraint firstItem="2kS-5N-ai8" firstAttribute="top" secondItem="Six-01-IYD" secondAttribute="bottom" constant="10" id="hZC-qG-oCY"/>
+                                            <constraint firstItem="lus-YA-Zqh" firstAttribute="top" secondItem="puk-84-bV0" secondAttribute="top" constant="15" id="ojC-Hp-D16"/>
+                                            <constraint firstItem="Six-01-IYD" firstAttribute="top" secondItem="ixY-cC-DGu" secondAttribute="bottom" constant="10" id="sHD-lg-4xe"/>
+                                            <constraint firstItem="FiF-Ai-IaO" firstAttribute="leading" secondItem="bDc-n1-ENY" secondAttribute="leading" id="tEj-wV-VQO"/>
+                                            <constraint firstItem="bDc-n1-ENY" firstAttribute="top" secondItem="lus-YA-Zqh" secondAttribute="bottom" constant="8" symbolic="YES" id="ufG-0n-Usx"/>
+                                            <constraint firstItem="ixY-cC-DGu" firstAttribute="trailing" secondItem="FiF-Ai-IaO" secondAttribute="trailing" id="ufx-Kz-HuP"/>
+                                            <constraint firstItem="ixY-cC-DGu" firstAttribute="leading" secondItem="FiF-Ai-IaO" secondAttribute="leading" id="v5w-El-unB"/>
+                                            <constraint firstItem="FiF-Ai-IaO" firstAttribute="top" secondItem="bDc-n1-ENY" secondAttribute="bottom" constant="10" id="wiE-Dx-RPg"/>
+                                            <constraint firstItem="2kS-5N-ai8" firstAttribute="leading" secondItem="Six-01-IYD" secondAttribute="leading" id="wyv-K0-Gq3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="puk-84-bV0" secondAttribute="bottom" id="9cM-dI-qSv"/>
+                                    <constraint firstAttribute="trailing" secondItem="puk-84-bV0" secondAttribute="trailing" constant="20" symbolic="YES" id="KBm-dr-a1h"/>
+                                    <constraint firstItem="puk-84-bV0" firstAttribute="top" secondItem="RcY-GW-5LK" secondAttribute="top" constant="20" symbolic="YES" id="qd7-bW-kxt"/>
+                                    <constraint firstItem="puk-84-bV0" firstAttribute="leading" secondItem="RcY-GW-5LK" secondAttribute="leading" constant="20" symbolic="YES" id="vFo-5H-UoL"/>
+                                    <constraint firstItem="puk-84-bV0" firstAttribute="centerX" secondItem="RcY-GW-5LK" secondAttribute="centerX" id="wn1-Rv-brP"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RcY-GW-5LK" firstAttribute="leading" secondItem="71T-rr-GV3" secondAttribute="leading" id="433-Kd-GTC"/>
+                            <constraint firstItem="RcY-GW-5LK" firstAttribute="top" secondItem="71T-rr-GV3" secondAttribute="top" id="SEw-DQ-sfE"/>
+                            <constraint firstAttribute="bottom" secondItem="RcY-GW-5LK" secondAttribute="bottom" constant="20" symbolic="YES" id="h1V-cV-QaJ"/>
+                            <constraint firstItem="RcY-GW-5LK" firstAttribute="trailing" secondItem="71T-rr-GV3" secondAttribute="trailing" id="xFE-0t-mlE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="71T-rr-GV3"/>
                     </view>
                     <navigationItem key="navigationItem" title="FAQs" id="X3N-sG-k5Z"/>
+                    <size key="freeformSize" width="414" height="1000"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXo-4b-Vvu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4380" y="2648"/>
+            <point key="canvasLocation" x="4379.7101449275369" y="2647.7678571428569"/>
         </scene>
         <!--Qs Navigation Controller-->
         <scene sceneID="Am5-8a-Sml">
