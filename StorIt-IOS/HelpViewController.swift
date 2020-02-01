@@ -10,6 +10,8 @@ import UIKit
 
 class HelpViewController: UIViewController {
 
+    @IBOutlet weak var submitSuggestionText: UITextView!
+    @IBOutlet weak var submitBugText: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,6 +19,14 @@ class HelpViewController: UIViewController {
         let backButton = UIBarButtonItem(image: UIImage(named: "back-24"), style: .plain, target: self, action: #selector(goBack))
         
         self.navigationItem.leftBarButtonItem = backButton
+        
+        //add design
+        submitBugText.layer.borderColor = UIColor.lightGray.cgColor;
+        submitBugText.layer.borderWidth = 0.5
+        submitBugText.layer.cornerRadius = 5
+        submitSuggestionText.layer.borderColor = UIColor.lightGray.cgColor;
+        submitSuggestionText.layer.borderWidth = 0.5
+        submitSuggestionText.layer.cornerRadius = 5
        
     }
     
