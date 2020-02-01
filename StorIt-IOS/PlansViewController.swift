@@ -10,6 +10,11 @@ import UIKit
 
 class PlansViewController: UIViewController {
 
+    //variables
+    @IBOutlet weak var planOne: UIView!
+    @IBOutlet weak var planTwo: UIView!
+    @IBOutlet weak var planThree: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,6 +22,17 @@ class PlansViewController: UIViewController {
         let backButton = UIBarButtonItem(image: UIImage(named: "back-24"), style: .plain, target: self, action: #selector(goBack))
         
         self.navigationItem.leftBarButtonItem = backButton
+        
+        //border designs
+        planOne.layer.borderColor = UIColor.lightGray.cgColor;
+        planOne.layer.borderWidth = 0.5
+        planOne.layer.cornerRadius = 5
+        planTwo.layer.borderColor = UIColor.lightGray.cgColor;
+        planTwo.layer.borderWidth = 0.5
+        planTwo.layer.cornerRadius = 5
+        planThree.layer.borderColor = UIColor.lightGray.cgColor;
+        planThree.layer.borderWidth = 0.5
+        planThree.layer.cornerRadius = 5
        
     }
     
