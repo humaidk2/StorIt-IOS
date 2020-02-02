@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
+    //hide keyboard
     @objc func viewTapped(gestureRecognizer : UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -90,6 +90,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    //sign in user
     @IBAction func signin(_ sender: Any) {
         let email = txtEmail.text!
         let password = txtPassword.text!
@@ -114,8 +115,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 var userId = firebaseAuth.currentUser!.uid
                 let dataToSave: [String : Any] = [
                     "Username" : username,
-                    "First Name" : firstName,
-                    "Last Name" : lastName,
+                    "Name" : firstName + " " + lastName,
                     "Email" : email,
                     "Birthdate" : birthDate
                 ]

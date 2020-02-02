@@ -42,20 +42,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 var userId = firebaseAuth.currentUser!.uid
                 let dataToSave: [String : Any] = [
                     "Username" : firebaseAuth.currentUser!.displayName,
-                    "First Name" : "",
-                    "Last Name" : "",
+                    "Name" : "",
                     "Email" : firebaseAuth.currentUser!.email,
                     "Birthdate" : datePicker?.date
                 ]
                 
-                db.collection("Users").document(userId).setData(dataToSave)
-                { err in
-                    if let err = err {
-                        print("Error writing document: \(err)")
-                    }else{
-                        print("Document successfully written!")
+                //check if document exists
+                db.collection("Users").document(userId).getDocument {
+                    (document, error) in
+                    if let document = document , document.exists {
+                        print("Document does exist")
+                    } else {
+                        print("Document doesn't exist")
+                        db.collection("Users").document(userId).setData(dataToSave)
+                        { err in
+                            if let err = err {
+                                print("Error writing document: \(err)")
+                            }else{
+                                print("Document successfully written!")
+                            }
+                        }
                     }
                 }
+                
             }else{
                 print(error?.localizedDescription)
             }

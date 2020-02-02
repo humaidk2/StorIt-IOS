@@ -55,6 +55,51 @@ class MenuTableViewController: UITableViewController {
             }
         }
         
+        //download prof pic
+        setupProfPic()
+        
+    }
+    
+    //download prof image from firebase storage
+    func setupProfPic(){
+        let firebaseAuth = Auth.auth()
+        var user = firebaseAuth.currentUser
+        
+        let url : URL? = user?.photoURL
+        
+        if url != nil{
+            downloadPickTask(url: url!)
+        }
+        
+    }
+    
+    //download url image and set to imageView
+    private func downloadPickTask(url: URL){
+        let session = URLSession(configuration: .default)
+        let downloadPicTask = session.dataTask(with: url) { (data,response, error) in
+            
+            if let e = error {
+                print("Error downloading")
+            } else {
+                if let res = response as? HTTPURLResponse {
+                    if let imageData = data {
+                        let image = UIImage(data: imageData)
+                        
+                        DispatchQueue.main.async {
+                            self.profilePic.image = image
+                        }
+                        
+                    }
+                    else{
+                        print("Couldn't get image")
+                    }
+                } else {
+                    print("Could not get response")
+                }
+            }
+            
+        }
+        downloadPicTask.resume()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
