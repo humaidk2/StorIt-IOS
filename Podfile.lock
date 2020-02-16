@@ -290,6 +290,7 @@ PODS:
   - GTMSessionFetcher/Core (1.3.0)
   - GTMSessionFetcher/Full (1.3.0):
     - GTMSessionFetcher/Core (= 1.3.0)
+  - HGCircularSlider (2.0.0)
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -303,6 +304,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - GoogleSignIn
+  - HGCircularSlider (~> 2.0.0)
 
 SPEC REPOS:
   trunk:
@@ -328,6 +330,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - HGCircularSlider
     - leveldb-library
     - nanopb
 
@@ -354,9 +357,10 @@ SPEC CHECKSUMS:
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
+  HGCircularSlider: 92e2ee098c814709f455b8f46cd9008147f6a869
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: a3c92d6c1a444a8ce4534c0fdffa854ae281221b
+PODFILE CHECKSUM: 4d0c0ff97b9be552422ca15736abfed3dbba0ed8
 
 COCOAPODS: 1.8.4

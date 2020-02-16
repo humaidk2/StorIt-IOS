@@ -10,5 +10,6 @@ target 'StorIt-IOS' do
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'Firebase/Storage'
+  pod 'HGCircularSlider', '~> 2.0.0'
 
 end
