@@ -67,4 +67,3 @@ class EditServerNavigationController : UINavigationController {
     
 }
 
-
