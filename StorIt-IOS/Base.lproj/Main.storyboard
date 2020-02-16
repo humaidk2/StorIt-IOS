@@ -245,7 +245,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENA-qB-Ofu" customClass="CircularSlider" customModule="HGCircularSlider">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENA-qB-Ofu" customClass="CircularSlider" customModule="HGCircularSlider">
                                 <rect key="frame" x="57" y="298" width="300" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -285,9 +285,6 @@
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="moveCircularSlider:" destination="H3n-6z-TLZ" eventType="valueChanged" id="WL3-f4-7Mj"/>
-                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLb-08-eiU">
                                 <rect key="frame" x="150" y="678" width="111" height="40"/>
@@ -2498,26 +2495,97 @@ Questions</string>
             </objects>
             <point key="canvasLocation" x="3957.971014492754" y="349.55357142857139"/>
         </scene>
-        <!--Edit Server View Controller-->
+        <!--Edit Server-->
         <scene sceneID="hPh-bi-6lQ">
             <objects>
                 <viewController id="nc8-Hp-tU5" customClass="EditServerViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zrJ-Xq-hiu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server ____" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ka-x8-OCj">
+                                <rect key="frame" x="20" y="138" width="160" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPq-MH-EBN" customClass="CircularSlider" customModule="HGCircularSlider">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="8wA-5H-sQN"/>
+                                    <constraint firstAttribute="height" constant="300" id="ijk-Bw-UM7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <real key="value" value="1000"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                        <color key="value" red="0.34665021300315857" green="0.089804865419864655" blue="0.6207042932510376" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="backtrackLineWidth">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbTintColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="moveCircularSlider:" destination="H3n-6z-TLZ" eventType="valueChanged" id="Y57-Kw-c1d"/>
+                                    <action selector="moveSlider:" destination="nc8-Hp-tU5" eventType="valueChanged" id="I7P-ay-UhP"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8U-GG-WTX">
+                                <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="f8U-GG-WTX" firstAttribute="centerX" secondItem="zrJ-Xq-hiu" secondAttribute="centerX" id="Bn2-mG-MVQ"/>
+                            <constraint firstItem="f8U-GG-WTX" firstAttribute="centerY" secondItem="zrJ-Xq-hiu" secondAttribute="centerY" id="bPt-c6-WzV"/>
+                            <constraint firstItem="xPq-MH-EBN" firstAttribute="centerY" secondItem="zrJ-Xq-hiu" secondAttribute="centerY" id="bcX-Km-1K3"/>
+                            <constraint firstItem="0ka-x8-OCj" firstAttribute="top" secondItem="ubc-7U-gbx" secondAttribute="top" constant="50" id="ruR-lp-bXw"/>
+                            <constraint firstItem="xPq-MH-EBN" firstAttribute="centerX" secondItem="zrJ-Xq-hiu" secondAttribute="centerX" id="veJ-3b-kPm"/>
+                            <constraint firstItem="0ka-x8-OCj" firstAttribute="leading" secondItem="ubc-7U-gbx" secondAttribute="leading" constant="20" id="zOa-9k-bT1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ubc-7U-gbx"/>
                     </view>
-                    <navigationItem key="navigationItem" id="X8c-Gd-raQ"/>
+                    <navigationItem key="navigationItem" title="Edit Server" id="X8c-Gd-raQ"/>
+                    <connections>
+                        <outlet property="serverStorage" destination="f8U-GG-WTX" id="9FJ-6S-WzZ"/>
+                        <outlet property="slider" destination="xPq-MH-EBN" id="8du-Id-TLN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvp-O9-xCl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5860.8695652173919" y="757.36607142857144"/>
+            <point key="canvasLocation" x="4941" y="1018"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Edit Server Navigation Controller-->
         <scene sceneID="fjJ-Fw-phQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rgt-Vs-BJc" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rgt-Vs-BJc" customClass="EditServerNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GAF-ns-8ct">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2530,7 +2598,7 @@ Questions</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeP-He-UGB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4950.7246376811599" y="757.36607142857144"/>
+            <point key="canvasLocation" x="4942" y="350"/>
         </scene>
     </scenes>
     <resources>
