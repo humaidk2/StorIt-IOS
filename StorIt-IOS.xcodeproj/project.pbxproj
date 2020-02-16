@@ -22,6 +22,8 @@
 		FA7CBAE123CF2F00004C7F2A /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CBAE023CF2F00004C7F2A /* HelpViewController.swift */; };
 		FA7CBAE323CF2FA1004C7F2A /* TermsAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CBAE223CF2FA1004C7F2A /* TermsAndConditionViewController.swift */; };
 		FA7CBAE523CF2FD1004C7F2A /* FAQsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CBAE423CF2FD1004C7F2A /* FAQsViewController.swift */; };
+		FA7F3FE423F18B980047CF9E /* ServerInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3FE323F18B980047CF9E /* ServerInformationViewController.swift */; };
+		FA7F3FE623F9CF370047CF9E /* EditServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F3FE523F9CF370047CF9E /* EditServerViewController.swift */; };
 		FA8F1C1B23B23DCA00B3C20C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA8F1C1A23B23DCA00B3C20C /* GoogleService-Info.plist */; };
 		FA8F1C1F23B25CFF00B3C20C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C1E23B25CFF00B3C20C /* LoginViewController.swift */; };
 		FA8F1C2123B25DF000B3C20C /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F1C2023B25DF000B3C20C /* ClientViewController.swift */; };
@@ -82,6 +84,8 @@
 		FA7CBAE023CF2F00004C7F2A /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		FA7CBAE223CF2FA1004C7F2A /* TermsAndConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionViewController.swift; sourceTree = "<group>"; };
 		FA7CBAE423CF2FD1004C7F2A /* FAQsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQsViewController.swift; sourceTree = "<group>"; };
+		FA7F3FE323F18B980047CF9E /* ServerInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerInformationViewController.swift; sourceTree = "<group>"; };
+		FA7F3FE523F9CF370047CF9E /* EditServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditServerViewController.swift; sourceTree = "<group>"; };
 		FA8F1C1A23B23DCA00B3C20C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA8F1C1E23B25CFF00B3C20C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA8F1C2023B25DF000B3C20C /* ClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				FA8F1C2A23B38C6300B3C20C /* ServerViewController.swift */,
 				FAE7AC8723D220E700FA3CB8 /* AddServerPopUpViewController.swift */,
 				FAE7AC8B23D22B2000FA3CB8 /* SBCardPopupViewController.swift */,
+				FA7F3FE523F9CF370047CF9E /* EditServerViewController.swift */,
+				FA7F3FE323F18B980047CF9E /* ServerInformationViewController.swift */,
 				FAE7AC7823CFE5F400FA3CB8 /* ServerTableViewCell.swift */,
 				FA8F1C2823B37F8E00B3C20C /* SlideInTransition.swift */,
 				FA7CBADA23CF1712004C7F2A /* PaymentDetailsViewController.swift */,
@@ -416,7 +422,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7CBAE523CF2FD1004C7F2A /* FAQsViewController.swift in Sources */,
+				FA7F3FE623F9CF370047CF9E /* EditServerViewController.swift in Sources */,
 				FAE7AC8623D1F7B300FA3CB8 /* MoreOptionsTableViewCell.swift in Sources */,
+				FA7F3FE423F18B980047CF9E /* ServerInformationViewController.swift in Sources */,
 				C6B2B4DD23B155DD0035F586 /* AppDelegate.swift in Sources */,
 				FAB6058523DBB9A3009A4758 /* ForgotPasswordPopUpViewController.swift in Sources */,
 				FA8F1C2523B26B7F00B3C20C /* SignUpViewController.swift in Sources */,
