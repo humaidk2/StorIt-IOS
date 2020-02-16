@@ -18,6 +18,7 @@ class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
     
     @IBOutlet weak var sliderStorageValue: UILabel!
     @IBOutlet weak var sliderStorage: UISlider!
+
     
     //let create initiate for popup
     static func create () -> UIViewController {
