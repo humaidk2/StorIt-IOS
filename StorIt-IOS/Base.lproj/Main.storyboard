@@ -188,6 +188,7 @@
                                         <color key="backgroundColor" red="0.85763823986053467" green="0.95513194799423218" blue="0.84611469507217407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="serverName" destination="PM2-2S-q0R" id="cUc-JS-7vA"/>
+                                            <segue destination="rdh-iY-13j" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="vux-m4-a6s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -235,6 +236,121 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPh-17-3EE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2886.9565217391305" y="349.55357142857139"/>
+        </scene>
+        <!--Server Information-->
+        <scene sceneID="1XZ-jF-ztG">
+            <objects>
+                <viewController id="H3n-6z-TLZ" customClass="ServerInformationViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Obs-uB-cuA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENA-qB-Ofu" customClass="CircularSlider" customModule="HGCircularSlider">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="f7Z-EC-5HI"/>
+                                    <constraint firstAttribute="width" constant="300" id="pQq-c4-VCy"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <real key="value" value="1000"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                        <color key="value" red="0.34665021300315857" green="0.089804865419864655" blue="0.6207042932510376" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="backtrackLineWidth">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbTintColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="moveCircularSlider:" destination="H3n-6z-TLZ" eventType="valueChanged" id="WL3-f4-7Mj"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLb-08-eiU">
+                                <rect key="frame" x="150" y="678" width="111" height="40"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="CVl-DB-khw"/>
+                                    <constraint firstAttribute="height" constant="40" id="jeY-FP-QFO"/>
+                                </constraints>
+                                <state key="normal" title="STOP SERVER">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKq-nP-luO">
+                                <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server ____" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsx-Xa-Vsr">
+                                <rect key="frame" x="20" y="138" width="160" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wb-57-Yeh">
+                                <rect key="frame" x="150" y="618" width="114" height="40"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="b2v-WF-bhX"/>
+                                    <constraint firstAttribute="height" constant="40" id="fKz-4w-TRV"/>
+                                </constraints>
+                                <state key="normal" title="EDIT SERVER">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Rgt-Vs-BJc" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="wcO-Yg-NOj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sKq-nP-luO" firstAttribute="centerX" secondItem="Obs-uB-cuA" secondAttribute="centerX" id="66e-0x-d1S"/>
+                            <constraint firstItem="tsx-Xa-Vsr" firstAttribute="top" secondItem="XrQ-ob-Y9u" secondAttribute="top" constant="50" id="9qZ-uc-eCf"/>
+                            <constraint firstItem="4wb-57-Yeh" firstAttribute="centerX" secondItem="Obs-uB-cuA" secondAttribute="centerX" id="9xZ-gP-LJZ"/>
+                            <constraint firstItem="sKq-nP-luO" firstAttribute="centerY" secondItem="Obs-uB-cuA" secondAttribute="centerY" id="P8x-ar-cOt"/>
+                            <constraint firstItem="ENA-qB-Ofu" firstAttribute="centerY" secondItem="Obs-uB-cuA" secondAttribute="centerY" id="SGj-db-2by"/>
+                            <constraint firstItem="qLb-08-eiU" firstAttribute="leading" secondItem="4wb-57-Yeh" secondAttribute="leading" id="UzL-EZ-TO4"/>
+                            <constraint firstItem="qLb-08-eiU" firstAttribute="top" secondItem="4wb-57-Yeh" secondAttribute="bottom" constant="20" id="XH3-OF-sbh"/>
+                            <constraint firstItem="tsx-Xa-Vsr" firstAttribute="leading" secondItem="XrQ-ob-Y9u" secondAttribute="leading" constant="20" id="eI5-mI-oOB"/>
+                            <constraint firstItem="4wb-57-Yeh" firstAttribute="top" secondItem="ENA-qB-Ofu" secondAttribute="bottom" constant="20" id="eh8-0l-xPS"/>
+                            <constraint firstItem="ENA-qB-Ofu" firstAttribute="centerX" secondItem="Obs-uB-cuA" secondAttribute="centerX" id="wr9-Pp-i6c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XrQ-ob-Y9u"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Server Information" id="Ew0-vW-Vmy"/>
+                    <connections>
+                        <outlet property="circularSlider" destination="ENA-qB-Ofu" id="LZY-2V-Xa9"/>
+                        <outlet property="serverStorage" destination="sKq-nP-luO" id="bZR-rl-dgn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCr-mW-Xk7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3957.971014492754" y="1017.8571428571428"/>
         </scene>
         <!--Add Server Pop Up View Controller-->
         <scene sceneID="uRB-gD-y0c">
@@ -338,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jca-7K-iLY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3881.884057971015" y="350.89285714285711"/>
+            <point key="canvasLocation" x="3598" y="-1126"/>
         </scene>
         <!--Forgot Password Pop Up View Controller-->
         <scene sceneID="2p4-iC-fPm">
@@ -404,7 +520,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4EJ-pp-0Dg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3878.985507246377" y="582.58928571428567"/>
+            <point key="canvasLocation" x="3596" y="-893"/>
         </scene>
         <!--Client-->
         <scene sceneID="rF2-9T-x9q">
@@ -1525,7 +1641,7 @@ Tel +971 4 2781800</string>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="300" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nH-GC-1AB">
                                                 <rect key="frame" x="20" y="64" width="331" height="1339"/>
-                                                <mutableString key="text">Last updated: 10-10-2019
+                                                <string key="text">Last updated: 10-10-2019
 
 Please read these Terms and Conditions carefully before using the &lt;b&gt;http://www.CyberMonkeys.com&lt;/b&gt; website and StorIT mobile application (the "Service") operated by CyberMonkeys. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
 
@@ -1539,7 +1655,7 @@ Our Service may contain links to third-party web sites or services that are not 
 
 We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 (change this) days\' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
 
-If you have any questions about these Terms, please contact us.</mutableString>
+If you have any questions about these Terms, please contact us.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2363,6 +2479,58 @@ Questions</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NtO-ED-MJB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-239.13043478260872" y="3334.8214285714284"/>
+        </scene>
+        <!--Server Information Navigation Controller-->
+        <scene sceneID="NDQ-zW-b23">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rdh-iY-13j" customClass="ServerInformationNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nLA-ul-N26">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="H3n-6z-TLZ" kind="relationship" relationship="rootViewController" id="b1D-Xe-FT2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UD4-VL-eHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3957.971014492754" y="349.55357142857139"/>
+        </scene>
+        <!--Edit Server View Controller-->
+        <scene sceneID="hPh-bi-6lQ">
+            <objects>
+                <viewController id="nc8-Hp-tU5" customClass="EditServerViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zrJ-Xq-hiu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ubc-7U-gbx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="X8c-Gd-raQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jvp-O9-xCl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5860.8695652173919" y="757.36607142857144"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fjJ-Fw-phQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rgt-Vs-BJc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GAF-ns-8ct">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nc8-Hp-tU5" kind="relationship" relationship="rootViewController" id="alA-HP-Ark"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LeP-He-UGB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4950.7246376811599" y="757.36607142857144"/>
         </scene>
     </scenes>
     <resources>
