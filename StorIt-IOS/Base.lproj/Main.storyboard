@@ -2509,6 +2509,22 @@ Questions</string>
             </objects>
             <point key="canvasLocation" x="1857.9710144927537" y="3605.3571428571427"/>
         </scene>
+        <!--Purchase Plan-->
+        <scene sceneID="K9Q-q7-ucq">
+            <objects>
+                <viewController id="cZS-Tc-VPc" customClass="PurchasePlanNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qu7-gT-cQG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="yBX-bY-8Cg"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Purchase Plan" id="dQl-QM-RnQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4VX-ZA-c64" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4043" y="3605"/>
+        </scene>
         <!--Server Information Navigation Controller-->
         <scene sceneID="NDQ-zW-b23">
             <objects>
@@ -2667,6 +2683,24 @@ Questions</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGu-Ev-Jk1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="948" y="4348"/>
+        </scene>
+        <!--Purchase Plan Navigation Controller-->
+        <scene sceneID="K6T-xW-ddF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lfl-K4-djp" customClass="PurchasePlanNavigationController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ezy-b6-3Xd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cZS-Tc-VPc" kind="relationship" relationship="rootViewController" id="yHd-2O-mux"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="18f-Gh-LDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3070" y="3605"/>
         </scene>
     </scenes>
     <resources>
