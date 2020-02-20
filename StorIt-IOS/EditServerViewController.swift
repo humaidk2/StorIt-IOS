@@ -11,8 +11,10 @@ import HGCircularSlider
 
 class EditServerViewController: UIViewController {
 
+    //variables
     @IBOutlet weak var slider: CircularSlider!
     @IBOutlet weak var serverStorage: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +43,7 @@ class EditServerViewController: UIViewController {
         //
     }
 
+    //when slider is move, change value
     @IBAction func moveSlider(_ sender: CircularSlider) {
         let roundedValue = Int(sender.endPointValue.rounded())
         serverStorage.text = "\(roundedValue) MB"
