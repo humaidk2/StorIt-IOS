@@ -11,9 +11,10 @@ import HGCircularSlider
 
 class ServerInformationViewController: UIViewController {
 
-    
+    //variables
     @IBOutlet weak var serverStorage: UILabel!
     @IBOutlet weak var circularSlider: CircularSlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
