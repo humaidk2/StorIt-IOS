@@ -77,7 +77,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @objc func viewTapped(gestureRecognizer : UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    
+    //convert date format
     @objc func dateChanged(datePicker : UIDatePicker){
         
         let dateFormatter = DateFormatter()
