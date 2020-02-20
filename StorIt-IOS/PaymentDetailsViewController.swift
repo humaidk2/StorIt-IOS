@@ -8,7 +8,24 @@
 
 import UIKit
 
-class PaymentDetailsViewController: UIViewController {
+class PaymentDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    //how many row in tableview
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2;
+    }
+    
+    //display attributes for each cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PaymentDetailsTableViewCell
+        
+        let tapEdit = UITapGestureRecognizer(target: self, action: #selector(PaymentDetailsViewController.tapEdit))
+        cell.editButton.isUserInteractionEnabled = true
+        cell.editButton.addGestureRecognizer(tapEdit)
+         
+        return cell
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +42,29 @@ class PaymentDetailsViewController: UIViewController {
          dismiss(animated: true, completion: nil)
     }
 
+    //onlick function of tapEdit
+    @objc func tapEdit(sender:UITapGestureRecognizer){
+        print("TAPPED EDIT")
+        
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let editPaymentNC:EditPaymentDetailsNavigationController = storyboard.instantiateViewController(withIdentifier: "EditPaymentNC") as! EditPaymentDetailsNavigationController
+        
+        //go to new screen in fullscreen
+        editPaymentNC.modalPresentationStyle = .fullScreen
+        self.present(editPaymentNC, animated: true, completion: nil)
+    }
+    
+    //when pressed add new payment button
+    @IBAction func goToAddPayment(_ sender: Any) {
+        
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let addPaymentNC:AddCardNavigationController = storyboard.instantiateViewController(withIdentifier: "AddCardNC") as! AddCardNavigationController
+        
+        //go to new screen in fullscreen
+        addPaymentNC.modalPresentationStyle = .fullScreen
+        self.present(addPaymentNC, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
