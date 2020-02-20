@@ -75,7 +75,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
-    
+    //go to main page
     func goToMenu(){
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let clientVC:TabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
@@ -98,7 +98,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         txtField.leftViewMode = .always
     }
     
-
+    //go to popup for forgot password
     @IBAction func didTapForgotPass(_ sender: UIButton) {
         
         let popup = ForgotPasswordPopUpViewController.create()
