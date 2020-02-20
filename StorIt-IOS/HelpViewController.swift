@@ -10,8 +10,10 @@ import UIKit
 
 class HelpViewController: UIViewController {
 
+    //variables
     @IBOutlet weak var submitSuggestionText: UITextView!
     @IBOutlet weak var submitBugText: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
