@@ -14,10 +14,12 @@ class ServerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var fab : UIButton!
     var list = [ "Server 1", "Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1","Server 1",]
     
+    //set number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
     
+    //initailizer
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
