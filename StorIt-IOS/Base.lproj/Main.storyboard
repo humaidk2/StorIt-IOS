@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path_1" translatesAutoresizingMaskIntoConstraints="NO" id="8UL-X1-i3P">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="237.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="at5-tt-jLB">
                                 <rect key="frame" x="57" y="276" width="300" height="150"/>
@@ -39,7 +39,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.17898084769940595" green="0.90795829907208125" blue="0.40306674509657814" alpha="0.40271832191780821" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="b7m-B1-J4Q" firstAttribute="top" secondItem="0d1-y9-jkP" secondAttribute="bottom" constant="10" id="Qhp-d2-ZLP"/>
                                     <constraint firstAttribute="trailing" secondItem="b7m-B1-J4Q" secondAttribute="trailing" constant="8" id="TZC-Kx-W1x"/>
@@ -57,12 +57,15 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBf-yj-4Wa">
                                 <rect key="frame" x="57" y="481" width="300" height="50"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iR7-Un-meV"/>
                                     <constraint firstAttribute="width" constant="300" id="vXd-ar-V7t"/>
                                 </constraints>
-                                <state key="normal" title="LOGIN"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="LOG IN">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
@@ -452,6 +455,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jca-7K-iLY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3598" y="-1126"/>
+        </scene>
+        <!--Add Folder Pop Up View Controller-->
+        <scene sceneID="MRu-no-DKt">
+            <objects>
+                <viewController storyboardIdentifier="AddFolder" id="3qo-zD-mTd" customClass="AddFolderPopUpViewController" customModule="StorIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tjx-9V-Dm1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Create a New Folder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1x-xw-Ekn">
+                                <rect key="frame" x="16" y="26.5" width="178" height="21.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="3fp-zN-7BF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Folder Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQ6-Y2-Mdt">
+                                <rect key="frame" x="16" y="68" width="253" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="SPQ-pW-5Td">
+                                <rect key="frame" x="220" y="134" width="130" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIX-Pt-Lua">
+                                        <rect key="frame" x="0.0" y="0.0" width="66" height="30"/>
+                                        <state key="normal" title="CANCEL"/>
+                                        <connections>
+                                            <action selector="tapCancel:" destination="3qo-zD-mTd" eventType="touchUpInside" id="y47-51-Tjv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eW-sK-DrT">
+                                        <rect key="frame" x="98" y="0.0" width="32" height="30"/>
+                                        <state key="normal" title="ADD"/>
+                                        <connections>
+                                            <action selector="tapAdd:" destination="3qo-zD-mTd" eventType="touchUpInside" id="hpO-vt-J0N"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SPQ-pW-5Td" firstAttribute="leading" secondItem="ERt-bu-pJi" secondAttribute="leading" constant="220" id="0sn-aG-ir0"/>
+                            <constraint firstItem="L1x-xw-Ekn" firstAttribute="top" secondItem="Tjx-9V-Dm1" secondAttribute="top" constant="26.5" id="1Qb-5S-z5U"/>
+                            <constraint firstItem="ERt-bu-pJi" firstAttribute="bottom" secondItem="SPQ-pW-5Td" secondAttribute="bottom" constant="16" id="2hW-HY-zxC"/>
+                            <constraint firstItem="ERt-bu-pJi" firstAttribute="trailing" secondItem="SPQ-pW-5Td" secondAttribute="trailing" constant="25" id="L3T-lT-2Zv"/>
+                            <constraint firstItem="L1x-xw-Ekn" firstAttribute="leading" secondItem="ERt-bu-pJi" secondAttribute="leading" constant="16" id="ReM-b5-9nL"/>
+                            <constraint firstItem="SPQ-pW-5Td" firstAttribute="top" secondItem="aQ6-Y2-Mdt" secondAttribute="bottom" constant="32" id="U3X-Zi-yQ9"/>
+                            <constraint firstItem="aQ6-Y2-Mdt" firstAttribute="top" secondItem="L1x-xw-Ekn" secondAttribute="bottom" constant="20" id="ZQc-eB-cvX"/>
+                            <constraint firstItem="ERt-bu-pJi" firstAttribute="trailing" secondItem="L1x-xw-Ekn" secondAttribute="trailing" constant="181" id="dlG-o0-vdl"/>
+                            <constraint firstItem="ERt-bu-pJi" firstAttribute="trailing" secondItem="aQ6-Y2-Mdt" secondAttribute="trailing" constant="106" id="tQd-Bp-6Xw"/>
+                            <constraint firstItem="aQ6-Y2-Mdt" firstAttribute="leading" secondItem="ERt-bu-pJi" secondAttribute="leading" constant="16" id="us5-PI-eYw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ERt-bu-pJi"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="180"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3A-wv-Jtr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4313.768115942029" y="-1127.0089285714284"/>
         </scene>
         <!--Forgot Password Pop Up View Controller-->
         <scene sceneID="2p4-iC-fPm">
