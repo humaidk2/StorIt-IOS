@@ -35,11 +35,14 @@ class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
         // Do any additional setup after loading the view.
     }
     
-    //close popup
+    // add server
     @IBAction func didAddServer(_ sender: Any) {
         self.popupViewController?.close()
     }
-    
+    // cancel popup
+    @IBAction func didCancelServer(_ sender: Any) {
+        self.popupViewController?.close()
+    }
     //when slider is moved, change value
     @IBAction func didChangeSlider(_ sender: UISlider) {
         
