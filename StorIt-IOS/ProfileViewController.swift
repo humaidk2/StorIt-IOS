@@ -77,12 +77,12 @@ class ProfileViewController: UIViewController {
     //Go back to Menu
     @objc func goBack(){
          //then go to profile page
-         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-         let clientNC:ClientNavigationController = storyboard.instantiateViewController(withIdentifier: "ClientNC") as! ClientNavigationController
-         
-         //go to new screen in fullscreen
-        clientNC.modalPresentationStyle = .fullScreen
-         self.present(clientNC, animated: true, completion: nil)
+          let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+          let tabBarVC:TabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
+          
+          //go to new screen in fullscreen
+         tabBarVC.modalPresentationStyle = .fullScreen
+          self.present(tabBarVC, animated: true, completion: nil)
     }
     
     //go to editprofile
