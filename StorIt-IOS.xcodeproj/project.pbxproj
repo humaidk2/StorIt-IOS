@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C4E5BBBFF48A56330FBAA0D8 /* Pods_StorIt_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2E7AD8366523B3F254C624 /* Pods_StorIt_IOS.framework */; };
+		0727FACEBC49603AACEAA72A /* libPods-StorIt-IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A75C640A5236859EC757421 /* libPods-StorIt-IOS.a */; };
 		C6B2B4DD23B155DD0035F586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B4DC23B155DD0035F586 /* AppDelegate.swift */; };
 		C6B2B4DF23B155DD0035F586 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B4DE23B155DD0035F586 /* SceneDelegate.swift */; };
 		C6B2B4E423B155DD0035F586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6B2B4E223B155DD0035F586 /* Main.storyboard */; };
@@ -21,6 +21,7 @@
 		FA55A9A823FDCD6C00260768 /* PurchasePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55A9A723FDCD6C00260768 /* PurchasePlanViewController.swift */; };
 		FA55A9AA23FE60AF00260768 /* PaymentDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55A9A923FE60AF00260768 /* PaymentDetailsTableViewCell.swift */; };
 		FA55A9AC23FEA50300260768 /* PurchasePlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55A9AB23FEA50300260768 /* PurchasePlanTableViewCell.swift */; };
+		FA55A9AE2414E83200260768 /* AddFolderPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55A9AD2414E83200260768 /* AddFolderPopUpViewController.swift */; };
 		FA7CBADB23CF1712004C7F2A /* PaymentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CBADA23CF1712004C7F2A /* PaymentDetailsViewController.swift */; };
 		FA7CBADD23CF25A9004C7F2A /* PlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CBADC23CF25A9004C7F2A /* PlansViewController.swift */; };
 		FA7CBADF23CF2DF1004C7F2A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CBADE23CF2DF0004C7F2A /* ProfileViewController.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A75C640A5236859EC757421 /* libPods-StorIt-IOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StorIt-IOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DEC980E9E125E735B6DD723 /* Pods-StorIt-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorIt-IOS.release.xcconfig"; path = "Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS.release.xcconfig"; sourceTree = "<group>"; };
 		AD7705C54BE511C8AEFD99C6 /* Pods-StorIt-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorIt-IOS.debug.xcconfig"; path = "Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C6B2B4D923B155DD0035F586 /* StorIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,12 +84,12 @@
 		C6B2B4FD23B155E10035F586 /* StorIt-IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StorIt-IOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B2B50123B155E10035F586 /* StorIt_IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorIt_IOSUITests.swift; sourceTree = "<group>"; };
 		C6B2B50323B155E10035F586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC2E7AD8366523B3F254C624 /* Pods_StorIt_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorIt_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA55A9A323FDCD2600260768 /* EditPaymentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPaymentDetailsViewController.swift; sourceTree = "<group>"; };
 		FA55A9A523FDCD4F00260768 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		FA55A9A723FDCD6C00260768 /* PurchasePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePlanViewController.swift; sourceTree = "<group>"; };
 		FA55A9A923FE60AF00260768 /* PaymentDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		FA55A9AB23FEA50300260768 /* PurchasePlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePlanTableViewCell.swift; sourceTree = "<group>"; };
+		FA55A9AD2414E83200260768 /* AddFolderPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderPopUpViewController.swift; sourceTree = "<group>"; };
 		FA7CBADA23CF1712004C7F2A /* PaymentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsViewController.swift; sourceTree = "<group>"; };
 		FA7CBADC23CF25A9004C7F2A /* PlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansViewController.swift; sourceTree = "<group>"; };
 		FA7CBADE23CF2DF0004C7F2A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4E5BBBFF48A56330FBAA0D8 /* Pods_StorIt_IOS.framework in Frameworks */,
+				0727FACEBC49603AACEAA72A /* libPods-StorIt-IOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +155,7 @@
 		0E93AD5D4FFFDED2C4CDC8E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CC2E7AD8366523B3F254C624 /* Pods_StorIt_IOS.framework */,
+				0A75C640A5236859EC757421 /* libPods-StorIt-IOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,6 +189,7 @@
 				C6B2B4DC23B155DD0035F586 /* AppDelegate.swift */,
 				C6B2B4DE23B155DD0035F586 /* SceneDelegate.swift */,
 				C6B2B4E223B155DD0035F586 /* Main.storyboard */,
+				FA55A9AD2414E83200260768 /* AddFolderPopUpViewController.swift */,
 				FAB6058423DBB9A3009A4758 /* ForgotPasswordPopUpViewController.swift */,
 				FA8F1C1E23B25CFF00B3C20C /* LoginViewController.swift */,
 				FA7CBAE023CF2F00004C7F2A /* HelpViewController.swift */,
@@ -253,7 +256,6 @@
 				C6B2B4D523B155DD0035F586 /* Sources */,
 				C6B2B4D623B155DD0035F586 /* Frameworks */,
 				C6B2B4D723B155DD0035F586 /* Resources */,
-				6A01035419F98FBCC42E9EF4 /* [CP] Embed Pods Frameworks */,
 				598F7CE00978EF6EB4A37E24 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -412,23 +414,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6A01035419F98FBCC42E9EF4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorIt-IOS/Pods-StorIt-IOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -468,6 +453,7 @@
 				FA8F1C2123B25DF000B3C20C /* ClientViewController.swift in Sources */,
 				FA7CBADD23CF25A9004C7F2A /* PlansViewController.swift in Sources */,
 				FA8F1C2923B37F8E00B3C20C /* SlideInTransition.swift in Sources */,
+				FA55A9AE2414E83200260768 /* AddFolderPopUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,7 +628,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BPQJGKD63V;
 				INFOPLIST_FILE = "StorIt-IOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -660,7 +648,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BPQJGKD63V;
 				INFOPLIST_FILE = "StorIt-IOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
