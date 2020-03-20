@@ -39,7 +39,13 @@ class PaymentDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     //Go back to Menu
     @objc func goBack(){
-         dismiss(animated: true, completion: nil)
+         //then go to profile page
+          let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+          let tabBarVC:TabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
+          
+          //go to new screen in fullscreen
+         tabBarVC.modalPresentationStyle = .fullScreen
+          self.present(tabBarVC, animated: true, completion: nil)
     }
 
     //onlick function of tapEdit
