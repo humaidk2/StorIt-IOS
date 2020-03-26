@@ -12,6 +12,7 @@ class ClientCollectionViewCell: UICollectionViewCell {
     //variables
     @IBOutlet weak var fileType: UIImageView!
     @IBOutlet weak var fileName: UILabel!
-    @IBOutlet weak var moreOptions: UIImageView!
+    @IBOutlet weak var moreOptions: UIButton!
+    
   
 }
