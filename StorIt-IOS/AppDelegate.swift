@@ -14,6 +14,32 @@ import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
+    var orientationLock = UIInterfaceOrientationMask.all
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+            return self.orientationLock
+    }
+    
+    struct AppUtility {
+
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.orientationLock = orientation
+            }
+        }
+
+        /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+
+            self.lockOrientation(orientation)
+
+            UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+            UINavigationController.attemptRotationToDeviceOrientation()
+        }
+
+    }//end of orientation lock code
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
       if let error = error {
