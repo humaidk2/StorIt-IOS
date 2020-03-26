@@ -43,7 +43,7 @@ class MenuTableViewController: UITableViewController {
                 let email = document.get("Email")
                 
                 //set username and email in nav drawer
-                if email as? String == "" {
+                if username as? String == "" {
                     self.usernameTxt.text = "Username"
                 }else {
                     self.usernameTxt.text = username as? String
