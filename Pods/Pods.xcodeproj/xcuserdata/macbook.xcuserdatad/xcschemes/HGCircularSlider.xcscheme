@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82EEAE7DB07C6F17150BFE2EAD014CB2"
-               BuildableName = "HGCircularSlider.framework"
+               BuildableName = "libHGCircularSlider.a"
                BlueprintName = "HGCircularSlider"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

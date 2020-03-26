@@ -1,4 +1,4 @@
-framework module HGCircularSlider {
+module HGCircularSlider {
   umbrella header "HGCircularSlider-umbrella.h"
 
   export *
