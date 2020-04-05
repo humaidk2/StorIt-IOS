@@ -1,0 +1,1 @@
+../../../Target Support Files/HGCircularSlider/HGCircularSlider-umbrella.h

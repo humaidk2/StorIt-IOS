@@ -10,6 +10,7 @@ import UIKit
 
 class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
     
+    //variables
     var popupViewController: SBCardPopupViewController?
     
     var allowsTapToDismissPopupCard: Bool = true
@@ -18,6 +19,7 @@ class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
     
     @IBOutlet weak var sliderStorageValue: UILabel!
     @IBOutlet weak var sliderStorage: UISlider!
+
     
     //let create initiate for popup
     static func create () -> UIViewController {
@@ -27,17 +29,21 @@ class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
         
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    // add server
     @IBAction func didAddServer(_ sender: Any) {
         self.popupViewController?.close()
     }
-    
+    // cancel popup
+    @IBAction func didCancelServer(_ sender: Any) {
+        self.popupViewController?.close()
+    }
+    //when slider is moved, change value
     @IBAction func didChangeSlider(_ sender: UISlider) {
         
         sliderStorageValue.text = "\(Int(sender.value.rounded())) MB"

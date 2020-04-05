@@ -11,9 +11,11 @@ import Firebase
 import GoogleSignIn
 import MobileCoreServices //import docs
 
-class ClientViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ClientViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     //variables
+    @IBOutlet weak var goBackButton: UIStackView!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var sortByTxt: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var fab : UIButton!
@@ -21,6 +23,16 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
     let sortByTableView = UITableView() //add new pop up
     let addNewTableView = UITableView()
     let moreOptionsTableView = UITableView()
+    var db : Firestore = Firestore.firestore()
+    var firebaseAuth: Auth = Auth.auth()
+    var userId : String = ""
+    var documentPath:String = ""
+    var rootPath:String = ""
+    var fullDirectory : String = ""
+    var userReference : String = ""
+    let folderIcon:UIImage = UIImage(named: "folder_transparent2")!
+    let fileIcon: UIImage = UIImage(named: "file_transparent2")!
+    var positionOfCell : Int = 0
     
     //For sortby popup
     let sortByImage: [UIImage] = [
@@ -33,28 +45,21 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         "Name","Name","Size","Size"
     ]
     //For more options popup
-    let moreOptionsList = [
+    var moreOptionsList = [
         "Folder","Share", "Download", "Move",
         "Duplicate", "Details", "Backup", "Remove"
     ]
-    let moreOptionsImage: [UIImage] = [
+    var moreOptionsImage: [UIImage] = [
         UIImage(systemName: "folder")!, UIImage(named: "icons8-shared-document-24")!,
         UIImage(named: "icons8-downloads-24")!, UIImage(named: "icons8-send-file-24")!,
         UIImage(named: "icons8-copy-30")!, UIImage(systemName: "info.circle")!,
         UIImage(named: "icons8-copy-30")!, UIImage(systemName: "trash")!
     ]
     
-    let fileName = [
-        "Folder","fidel.txt", "ex.txt", "ex.txt",
-        "ex.txt", "ex.txt", "ex.txt", "ex.txt"
-    ]
-    let fileType: [UIImage] = [
-        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!, UIImage(named: "background_2")!
-    ]
-    
+    var tempFileName : [String] = []
+    var fileName : [String] = []
+    var fileType : [UIImage] = []
+
     //create object of SlideInTransition class
     let transition = SlideInTransition()
     
@@ -63,7 +68,6 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         return fileName.count
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ClientCollectionViewCell
@@ -71,49 +75,71 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.fileName.text = fileName[indexPath.row]
         cell.fileType.image = fileType[indexPath.row]
         cell.moreOptions.tag = indexPath.row
-        let moreOptions = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapMoreOptions))
-        cell.moreOptions.isUserInteractionEnabled = true
-        cell.moreOptions.addGestureRecognizer(moreOptions)
+        cell.moreOptions.addTarget(self, action: #selector(ClientViewController.tapMoreOptions(_:)), for: .touchUpInside)
         return cell
     }
-    
+    //selecting a cell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("printed \(fileName[indexPath.row])")
+        if (fileName[indexPath.row].contains("Folder")){
+            documentPath = "\(documentPath)/\(fileName[indexPath.row])/\(userId)"
+            updateCurrentDirOfDevice(currentDir: documentPath) //update dir to firebase
+            loadCurrentDirectory()
+        }else {
+            //download the file and dislay
+        }
+    }
+
     //onlick function of moreOptions
     //popup slide up menu
-    @objc func tapMoreOptions(sender:UITapGestureRecognizer){
+    @objc func tapMoreOptions(_ sender: UIButton){
         let window = UIApplication.shared.keyWindow //to access nav controller
-            
-            //change its color when pressed
-            transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-            transparentView.frame = self.view.frame
-            window?.addSubview(transparentView)
-            
-            //create tableView
-            let screenSize = UIScreen.main.bounds.size
-            sortByTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 400)
-            window?.addSubview(moreOptionsTableView)
-            
-            //to go back to original state
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTransparentViewForMoreOptions))
-            transparentView.addGestureRecognizer(tapGesture)
-            
-            transparentView.alpha = 0
-            
-            //animation
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                self.transparentView.alpha = 0.5
-                self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height - 400, width: screenSize.width, height: 400)
-            }, completion: nil)
+        
+        //get position of button in collection view
+        var buttonPosition = sender.convert(CGPoint(), to: collectionView)
+        var indexPath = collectionView.indexPathForItem(at: buttonPosition)
+        positionOfCell = indexPath!.row //set position of cell
+        print("\(positionOfCell) ===== \(fileName[positionOfCell])")
+        moreOptionsList[0] = fileName[positionOfCell]
+        if (fileName[positionOfCell].contains("Folder")){
+            moreOptionsImage[0] = UIImage(named: "folder_transparent2")!
+        } else {
+            moreOptionsImage[0] = UIImage(named: "file_transparent2")!
         }
+        moreOptionsTableView.reloadData() //refresh
+        
+        //change its color when pressed
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        transparentView.frame = self.view.frame
+        window?.addSubview(transparentView)
+        
+        //create tableView
+        let screenSize = UIScreen.main.bounds.size
+        sortByTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 400)
+        window?.addSubview(moreOptionsTableView)
+        
+        //to go back to original state
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTransparentViewForMoreOptions))
+        transparentView.addGestureRecognizer(tapGesture)
+        
+        transparentView.alpha = 0
+        
+        //animation
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height - 400, width: screenSize.width, height: 400)
+        }, completion: nil)
+    }
 
-        //remove pop of from sortBy
-        @objc func clickTransparentViewForMoreOptions(){
-            let screenSize = UIScreen.main.bounds.size
-            //animation
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                self.transparentView.alpha = 0
-                self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 400)
-            }, completion: nil)
-        }
+    //remove pop of from sortBy
+    @objc func clickTransparentViewForMoreOptions(){
+        let screenSize = UIScreen.main.bounds.size
+        //animation
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.moreOptionsTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 400)
+        }, completion: nil)
+    }
     
     //Pressing nav drawer icon
     @IBAction func didTapMenu(_ sender: UIBarButtonItem) {
@@ -134,18 +160,53 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         dismiss(animated: true, completion: nil)
     }
     
+    //when user press search bar
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    //search bar cancel button pressed
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true) //dismiss keyboard
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Searched text: \(searchText)")
+        if (searchText == ""){
+            loadCurrentDirectory()
+        } else {
+            loadDirectory()
+            searchFileFolder(fileFolderName: searchText)
+        }
+    }
+    
+    //Display to portrait mode
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        AppDelegate.AppUtility.lockOrientation(.portrait)
+    }
+    //makes screen orientation for others Viewcontroller according to device physical orientation.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Don't forget to reset when view is being removed
+        AppDelegate.AppUtility.lockOrientation(.all)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        db = Firestore.firestore()
+        firebaseAuth = Auth.auth()
+        userId = firebaseAuth.currentUser!.uid
+        documentPath = "/Users/\(userId)/TreeNode/\(userId)"
+        rootPath = "/Users/\(userId)/TreeNode/\(userId)"
+        userReference = "/Users/\(userId)"
+        
+        goBackButton.isHidden = true //hide the view
+        
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        var layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        layout.minimumInteritemSpacing = 5
-        
-        //divide 2 is for how many columns which is 2 columns
-        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width - 20)/2, height: self.collectionView.frame.size.height/3)
+        searchBar.delegate = self
         
         //sortByTableView initialized
         sortByTableView.isScrollEnabled = true
@@ -178,7 +239,16 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         let tapSortBy = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapSortBy))
         sortByTxt.isUserInteractionEnabled = true
         sortByTxt.addGestureRecognizer(tapSortBy)
-    }
+        
+        loadCurrentDirOfDevice() //load data to collection view
+        
+        //to go back to previous directory
+        let tapGoBackButton = UITapGestureRecognizer(target: self, action: #selector(clickGoBackButton))
+        goBackButton.isUserInteractionEnabled = true
+        goBackButton.addGestureRecognizer(tapGoBackButton)
+            
+        
+    } // end of line of viewDidLoad()
     
     //onlick function of tapSortBy
     //popup slide up menu
@@ -206,6 +276,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.transparentView.alpha = 0.5
             self.sortByTableView.frame = CGRect(x: 0, y: screenSize.height - 250, width: screenSize.width, height: 250)
         }, completion: nil)
+        
     }
 
     //remove pop of from sortBy
@@ -263,6 +334,135 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.transparentView.alpha = 0
             self.addNewTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 180)
         }, completion: nil)
+    }
+    
+    /*---------*/
+    /*functions*/
+    /*---------*/
+    private func addFile(name : String){
+        fileName.append(name)
+        if (name.contains("Folder")){
+            fileType.append(folderIcon)
+        } else {
+            fileType.append(fileIcon)
+        }
+        collectionView.reloadData()
+    }
+    
+    private func loadDirectory() {
+        fileName.removeAll()
+        fileType.removeAll()
+        var files : [String] = fullDirectory.components(separatedBy: ",")
+        files.remove(at: 0) //delete first element because it creates an empty string
+        for file in files {
+            fileName.append(file)
+            if (file.contains("Folder")){
+                fileType.append(folderIcon)
+            }else{
+                fileType.append(fileIcon)
+            }
+        }
+        tempFileName = fileName
+        collectionView.reloadData() //reload data
+    }
+    
+    private func loadCurrentDirectory() {
+        //Get data from fireStore
+        print("Document PATH = \(documentPath)")
+        if (documentPath == rootPath) {
+            goBackButton.isHidden = true // hide the view
+        } else {
+            goBackButton.isHidden = false //unhide the view
+        }
+        db.document(documentPath).getDocument {
+            (document, error) in
+            if let document = document , document.exists {
+                let directory = document.get("dir")
+                if (directory != nil){
+                    self.fullDirectory = directory as! String
+                    print(directory)
+                }
+                self.loadDirectory()
+            } else {
+                print("Document doesn't exist")
+            }
+        }
+    }
+    
+    //go back to previous directory
+    @objc func clickGoBackButton(){
+        removeCurrentDirectory()
+        loadCurrentDirectory()
+    }
+    
+    private func removeCurrentDirectory(){
+        var countForBackslash = 0
+        for i in stride(from: 1, through: documentPath.count, by: 1) {
+            if(countForBackslash < 2){
+                if(documentPath.last == "/"){
+                    countForBackslash = countForBackslash + 1
+                }
+                documentPath = String(documentPath.dropLast())
+            }
+        }
+        updateCurrentDirOfDevice(currentDir: documentPath) //update dir to firebase
+    }
+    
+    private func searchFileFolder (fileFolderName : String) {
+        //filter the array
+        fileName = fileName.filter({$0.lowercased().prefix(fileFolderName.count) == fileFolderName.lowercased()})
+//        for (i,fileFolder) in tempFileName.enumerated(){
+//            if(!tempFileName[i].lowercased().contains(fileFolderName.lowercased())){
+//                fileName.remove(at: i)
+//                fileType.remove(at: i)
+//                fileType.removeAll({$0.})
+//            }
+//        }
+        collectionView.reloadData()
+    }
+    
+    //put current directory of device and send to firebase
+    //will be used so that it updated curr dir when logged in to another device
+    private func loadCurrentDirOfDevice(){
+        db.document(userReference).getDocument {
+            (document, error) in
+            if let document = document , document.exists {
+                let dirOfDevice = document.get("currDirOfDevice")
+                if (dirOfDevice != nil){
+                    self.documentPath = dirOfDevice as! String
+                    self.loadCurrentDirectory()
+                } else { //if it null, create and send to firebase
+                    let currDirOfDevice: [String : Any] = [
+                        "currDirOfDevice" : self.rootPath
+                    ]
+                    self.db.document(self.userReference).updateData(currDirOfDevice)
+                    { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        }else{
+                            print("Document successfully written!")
+                        }
+                    }
+                    self.loadCurrentDirectory()
+                }
+            } else {
+                print("Failure")
+            }
+        }
+    } //end of loadCurrentDirOfDevice
+    
+    private func updateCurrentDirOfDevice(currentDir : String){
+        let currDirOfDevice: [String : Any] = [
+            "currDirOfDevice" : currentDir
+        ]
+        self.db.document(self.userReference).updateData(currDirOfDevice)
+        { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            }else{
+                print("Document successfully written!")
+            }
+        }
     }
     
 }
@@ -348,13 +548,31 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
         }
        
     }
-    
+    //select table view (sortby // moreOptions // addNew)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 {
+        if tableView == addNewTableView {
             
-            print("THIS IS ROW ONE")
+        }else if tableView == sortByTableView{
             
+        }else if tableView == moreOptionsTableView {
+             if indexPath.row == 1 { // share
+                print("THIS IS SHARE BUTTON")
+             } else if indexPath.row == 2 { // download
+                print("THIS IS DOWNLOAD BUTTON")
+             } else if indexPath.row == 3 { // move
+                print("THIS IS MOVE BUTTON")
+             } else if indexPath.row == 4 { // duplicate
+                print("THIS IS DUPLICATE BUTTON")
+             } else if indexPath.row == 5 { // details
+                print("THIS IS DETAILS BUTTON")
+             } else if indexPath.row == 6 { //backup
+                print("THIS IS BACKUP BUTTON")
+             } else if indexPath.row == 7 { // remove
+                print("THIS IS REMOVE BUTTON")
+                removefileFolder()
+                clickTransparentViewForMoreOptions()
+             }
         }
     }
     
@@ -371,6 +589,21 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
     //onlick function of tapUpload
     @objc func tapFolder(sender:UITapGestureRecognizer){
         print("TAPPED FOLDER")
+        //close pop up for add folder/upload file
+        //-------------------------------
+        let screenSize = UIScreen.main.bounds.size
+        //animation
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.addNewTableView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: 180)
+        }, completion: nil)
+        //--------------------------
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let addFolderController = storyboard.instantiateViewController(withIdentifier: "AddFolder") as! AddFolderPopUpViewController
+        addFolderController.documentPath = documentPath
+        addFolderController.fullDirectory = fullDirectory
+        let cardPopup = SBCardPopupViewController(contentViewController: addFolderController)
+        cardPopup.show(onViewController: self)
     }
     
     //onlick function of tapUpload
@@ -395,6 +628,37 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
         documentPicker.allowsMultipleSelection = false //allow one file at a time
         present(documentPicker, animated:true, completion: nil)
     }
+    
+    //hide keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //Functions for more option
+    //remove file or folder in array and firebase
+    private func removefileFolder(){
+        print("Position ==== \(positionOfCell)")
+        fileName.remove(at: positionOfCell)
+        fileType.remove(at: positionOfCell)
+        var updatedFullDirectory: String = ""
+        let comma = ","
+        for fileFolder in fileName {
+            updatedFullDirectory = updatedFullDirectory + comma + fileFolder
+        }
+        let fullDirectoryToSave: [String : Any] = [
+            "dir" : updatedFullDirectory
+        ]
+        db.document(documentPath).updateData(fullDirectoryToSave)
+        { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            }else{
+                print("Document successfully written!")
+            }
+        }
+        collectionView.reloadData()
+    }
+    
 }
 
 
@@ -429,6 +693,25 @@ extension ClientViewController: UIDocumentPickerDelegate {
      
 }
 
+//extentsion for collection view - size of cell and spacing
+extension ClientViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+      let padding: CGFloat = 40
+      let collectionCellSize = collectionView.frame.size.width - padding
+        let collectionCellHeight = collectionView.frame.size.height - padding
+
+        return CGSize(width: collectionCellSize/2, height: collectionCellHeight/2.3)
+
+     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        var sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        return sectionInset
+    }
+
+}
 
 //for navigation controller
 class ClientNavigationController : UINavigationController {

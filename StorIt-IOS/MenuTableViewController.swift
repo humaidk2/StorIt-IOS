@@ -11,11 +11,11 @@ import Firebase
 import GoogleSignIn
 
 class MenuTableViewController: UITableViewController {
-
+    
+    //variables
     @IBOutlet weak var usernameTxt: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var emailTxt: UILabel!
-    
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ class MenuTableViewController: UITableViewController {
                 let email = document.get("Email")
                 
                 //set username and email in nav drawer
-                if email as? String == "" {
+                if username as? String == "" {
                     self.usernameTxt.text = "Username"
                 }else {
                     self.usernameTxt.text = username as? String
@@ -101,7 +101,7 @@ class MenuTableViewController: UITableViewController {
         }
         downloadPicTask.resume()
     }
-    
+    //segues for each row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: //Profile
@@ -163,7 +163,7 @@ class MenuTableViewController: UITableViewController {
         }
       
     }
-    
+    //go to login page
     func goToLogin(){
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginVC:LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
@@ -172,7 +172,7 @@ class MenuTableViewController: UITableViewController {
         loginVC.modalPresentationStyle = .fullScreen
         self.present(loginVC, animated: true, completion: nil)
     }
-    
+    //close
     @IBAction func close() {
         dismiss(animated: true, completion: nil)
     }

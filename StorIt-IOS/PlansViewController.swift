@@ -34,14 +34,31 @@ class PlansViewController: UIViewController {
         planThree.layer.borderWidth = 0.5
         planThree.layer.cornerRadius = 5
        
+        //onclick for plan
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goToPurchasePlan))
+        planThree.addGestureRecognizer(tapGesture)
     }
     
-    //Go back to Menu
+    //Go back
     @objc func goBack(){
-         dismiss(animated: true, completion: nil)
+         //then go to profile page
+          let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+          let tabBarVC:TabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
+          
+          //go to new screen in fullscreen
+         tabBarVC.modalPresentationStyle = .fullScreen
+          self.present(tabBarVC, animated: true, completion: nil)
     }
     
-
+    //go to purchase plan
+    @objc func goToPurchasePlan(){
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let purchasePlanNC:PurchasePlanNavigationController = storyboard.instantiateViewController(withIdentifier: "PurchasePlanNC") as! PurchasePlanNavigationController
+        
+        //go to new screen in fullscreen
+        purchasePlanNC.modalPresentationStyle = .fullScreen
+        self.present(purchasePlanNC, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
