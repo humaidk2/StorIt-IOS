@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -164,9 +164,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lZV-MO-pfF">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="97p-Gc-dUz">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="357"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="75" id="ug4-hL-9m3" customClass="ServerTableViewCell" customModule="StorIT" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                        <rect key="frame" x="0.0" y="385" width="414" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ug4-hL-9m3" id="73D-yF-fPT">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
@@ -230,6 +234,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="fab" destination="Q5c-ZS-VFY" id="MnW-bU-Qfp"/>
+                        <outlet property="receivedImg" destination="97p-Gc-dUz" id="DZR-Vb-Cda"/>
+                        <outlet property="tableView" destination="lZV-MO-pfF" id="FI7-YX-aZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPh-17-3EE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -303,14 +309,20 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="Gbp-sd-40p"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelServer:" destination="nlj-0f-6hJ" eventType="touchUpInside" id="saU-zu-bYK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXL-8v-Dfv">
                                 <rect key="frame" x="212" y="120" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="UUB-6h-WaU"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="AddServer:" destination="nlj-0f-6hJ" eventType="touchUpInside" id="VI5-Qh-qCg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
