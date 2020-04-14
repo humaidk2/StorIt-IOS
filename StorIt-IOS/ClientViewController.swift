@@ -385,10 +385,22 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
                 self.loadDirectory()
             } else {
                 print("Document doesn't exist")
+                let dataToSave: [String : Any] = [
+                    "dir" : ","
+                ]
+                self.db.document(self.documentPath).setData(dataToSave)
+                { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    }else{
+                        print("Document successfully written!")
+                    }
+                }
             }
         }
     }
     
+
     //go back to previous directory
     @objc func clickGoBackButton(){
         removeCurrentDirectory()

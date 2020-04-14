@@ -1,6 +1,0 @@
-module Pods_StorIt_IOS {
-  umbrella header "Pods-StorIt-IOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
