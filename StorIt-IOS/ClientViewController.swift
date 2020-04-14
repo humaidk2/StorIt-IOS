@@ -400,6 +400,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+
     //go back to previous directory
     @objc func clickGoBackButton(){
         removeCurrentDirectory()
