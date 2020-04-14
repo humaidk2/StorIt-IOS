@@ -341,7 +341,6 @@ SPEC REPOS:
     - Socket.IO-Client-Swift
     - Starscream
     - PromisesObjC
->>>>>>> master
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
