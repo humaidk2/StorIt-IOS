@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import MobileCoreServices //import docs
+import WebRTC
 
 class ClientViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -21,6 +22,9 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
     let sortByTableView = UITableView() //add new pop up
     let addNewTableView = UITableView()
     let moreOptionsTableView = UITableView()
+    var client:WebRTCClient?
+    var docUrl:URL?
+    var fileId:Int?
     
     //For sortby popup
     let sortByImage: [UIImage] = [
@@ -44,23 +48,35 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         UIImage(named: "icons8-copy-30")!, UIImage(systemName: "trash")!
     ]
     
-    let fileName = [
-        "Folder","fidel.txt", "ex.txt", "ex.txt",
-        "ex.txt", "ex.txt", "ex.txt", "ex.txt"
-    ]
-    let fileType: [UIImage] = [
-        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
-        UIImage(named: "background_2")!, UIImage(named: "background_2")!
-    ]
+//    let fileName = [
+//        "Folder","fidel.txt", "ex.txt", "ex.txt",
+//        "ex.txt", "ex.txt", "ex.txt", "ex.txt"
+//    ]
+//    let fileType: [UIImage] = [
+//        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
+//        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
+//        UIImage(named: "background_2")!, UIImage(named: "background_2")!,
+//        UIImage(named: "background_2")!, UIImage(named: "background_2")!
+//    ]
+    var fileList: [File] = [File()]
     
     //create object of SlideInTransition class
     let transition = SlideInTransition()
     
     //CollectionView for Client page
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fileName.count
+        return fileList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print("selected item number", indexPath.row)
+        self.fileId = fileList[indexPath.row].getFileId()
+        print("item at index ", indexPath.row, " is pressed")
+        Auth.auth().currentUser?.getIDToken(completion: emitDownload)
+        // emit download
+        // but before that i need to find when uploading is completed
+        // and when it is  i need to add to filelist and
+        // refresh adapter
     }
     
     
@@ -68,8 +84,8 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ClientCollectionViewCell
         
-        cell.fileName.text = fileName[indexPath.row]
-        cell.fileType.image = fileType[indexPath.row]
+        cell.fileName.text = fileList[indexPath.row].getFileName()
+        cell.fileType.image = UIImage(named: fileList[indexPath.row].getFileImageName())
         cell.moreOptions.tag = indexPath.row
         let moreOptions = UITapGestureRecognizer(target: self, action: #selector(ClientViewController.tapMoreOptions))
         cell.moreOptions.isUserInteractionEnabled = true
@@ -136,6 +152,7 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.client = WebRTCClient(viewController:self)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -265,6 +282,13 @@ class ClientViewController: UIViewController, UICollectionViewDelegate, UICollec
         }, completion: nil)
     }
     
+    
+    func doneUploading(fileId:Int, fileSize:Int, fileType:String, fileName:String) {
+        self.fileList.append(File(fileId:fileId, fileSize:fileSize, fileName: fileName, fileType:fileType, isFolder:false))
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 //nav drawer
@@ -378,9 +402,11 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
         print("TAPPED SECURE UPLOAD")
         
         //import document
-        let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypePlainText as String], in: .import)
+//        let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypePlainText as String], in: .import)
+        let documentPicker = UIDocumentPickerViewController(documentTypes: ["com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key","public.image", "com.apple.application", "public.item","public.data", "public.content", "public.audiovisual-content", "public.movie", "public.audiovisual-content", "public.video", "public.audio", "public.text", "public.data", "public.zip-archive", "com.pkware.zip-archive", "public.composite-content", "public.text"], in: .import)
+
         documentPicker.delegate = self
-        documentPicker.allowsMultipleSelection = false //allow one file at a time
+        documentPicker.allowsMultipleSelection = true //allow one file at a time
         present(documentPicker, animated:true, completion: nil)
         
     }
@@ -392,9 +418,10 @@ extension ClientViewController: UITableViewDelegate, UITableViewDataSource {
         //import document
         let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypePlainText as String], in: .import)
         documentPicker.delegate = self
-        documentPicker.allowsMultipleSelection = false //allow one file at a time
+        documentPicker.allowsMultipleSelection = true //allow one file at a time
         present(documentPicker, animated:true, completion: nil)
     }
+    
 }
 
 
@@ -406,26 +433,77 @@ extension ClientViewController: UIDocumentPickerDelegate {
         guard let selectedFileUrl = urls.first else {
             return
         }
+//
+//        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//
+//        let sandboxFileURL = dir.appendingPathComponent(selectedFileUrl.path)
+//
+//        if FileManager.default.fileExists(atPath: sandboxFileURL.path){
+//            print ("file exists already")
+//        }else {
+        self.docUrl = selectedFileUrl
+        Auth.auth().currentUser?.getIDToken(completion: emitUpload)
+//            do {
+////                try FileManager.default.copyItem(at: selectedFileUrl, to: sandboxFileURL)
+////
+////                print("Copied file")
+//
+//                let data = try Data(contentsOf: selectedFileUrl)
+//                self.client?.emitUpload(token: "", data: data)
+//                // upload file
+//                // emit upload request
+//
+//            }catch{
+//                print("Error: \(error)")
+//            }
+
+//        }
         
-        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
-        let sandboxFileURL = dir.appendingPathComponent(selectedFileUrl.path)
-        
-        if FileManager.default.fileExists(atPath: sandboxFileURL.path){
-            print ("file exists already")
-        }else {
+    }
+    func emitUpload(token:String?, error: Error?) {
+        do {
+            let fileStream = InputStream(url:self.docUrl!)
+            fileStream?.open()
+            let bufferSize = 1024
+            let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
+            var fileData = Data()
+            while fileStream!.hasBytesAvailable {
+                let read = fileStream?.read(buffer, maxLength: bufferSize)
+                if read! < 0 {
+                    throw (fileStream?.streamError!)!
+                } else if read == 0 {
+                    break
+                }
+                fileData.append(buffer,count:read!)
+            }
+            buffer.deallocate()
+            fileStream?.close()
+//            let data = try Data(contentsOf: self.docUrl!)
+//            self.client = WebRTCClient(token: token ?? "", data: data)
+            self.client?.emitUpload(token: token ?? "", data: fileData, fileUrl:docUrl!)
+            // upload file
+            // emit upload request
             
+        }catch{
+            print("Error: \(error)")
+        }
+    
+    }
+    func emitDownload(token:String?, error: Error?) {
             do {
-                try FileManager.default.copyItem(at: selectedFileUrl, to: sandboxFileURL)
+    //            self.client = WebRTCClient(token: token ?? "", data: data)
+                print("download emitting")
+                self.client?.emitDownload(token: token!, fileId: self.fileId!)
+                // upload file
+                // emit upload request
                 
-                print("Copied file")
             }catch{
                 print("Error: \(error)")
             }
-            
-        }
         
-    }
+        }
+    
+    
      
 }
 
