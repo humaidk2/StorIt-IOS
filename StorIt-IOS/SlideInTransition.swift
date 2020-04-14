@@ -10,13 +10,16 @@ import UIKit
 
 class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
+    //variable
     var isPresenting = false
     let dimmingView = UIView()
     
+    //how long the transition will be
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 1.0
     }
     
+    //animation of nav drawer
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let toViewController = transitionContext.viewController(forKey: .to),
             let fromViewController = transitionContext.viewController(forKey: .from) else {

@@ -10,6 +10,7 @@ import UIKit
 
 class ServerTableViewCell: UITableViewCell {
 
+    //variable
     @IBOutlet weak var serverName: UILabel!
     
     override func awakeFromNib() {

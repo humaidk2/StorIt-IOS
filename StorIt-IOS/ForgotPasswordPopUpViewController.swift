@@ -11,12 +11,10 @@ import Firebase
 
 class ForgotPasswordPopUpViewController: UIViewController, SBCardPopupContent {
     
+    //variables
     var popupViewController: SBCardPopupViewController?
-    
     var allowsTapToDismissPopupCard: Bool = true
-    
     var allowsSwipeToDismissPopupCard: Bool = true
-    
     @IBOutlet weak var emailTxt: UITextField!
     
     //let create initiate for popup
@@ -58,7 +56,7 @@ class ForgotPasswordPopUpViewController: UIViewController, SBCardPopupContent {
         }
         
     }
-    
+    //reset password
     func resetPass(email : String, onSuccess: @escaping()-> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
