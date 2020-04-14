@@ -34,7 +34,8 @@ class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func didAddServer(_ sender: Any) {
+    
+    @IBAction func cancelServer(_ sender: Any) {
         self.popupViewController?.close()
     }
     
@@ -43,6 +44,9 @@ class AddServerPopUpViewController: UIViewController, SBCardPopupContent {
         sliderStorageValue.text = "\(Int(sender.value.rounded())) MB"
     }
     
+    @IBAction func AddServer(_ sender: Any) {
+        self.popupViewController?.closeWithCompletion()
+    }
     /*
     // MARK: - Navigation
 
