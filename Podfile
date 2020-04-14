@@ -10,5 +10,7 @@ target 'StorIt-IOS' do
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'Firebase/Storage'
+  pod 'GoogleWebRTC'
+  pod 'Socket.IO-Client-Swift'
 
 end
