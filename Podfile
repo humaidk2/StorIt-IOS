@@ -10,11 +10,7 @@ target 'StorIt-IOS' do
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'Firebase/Storage'
-<<<<<<< HEAD
   pod 'GoogleWebRTC'
   pod 'Socket.IO-Client-Swift'
-=======
   pod 'HGCircularSlider', '~> 2.0.0'
->>>>>>> master
-
 end
